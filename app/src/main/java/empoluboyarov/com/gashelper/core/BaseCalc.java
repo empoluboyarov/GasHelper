@@ -73,8 +73,7 @@ public final class BaseCalc {
     public static double calcAverTempSimple(double ax, double tgr, double tn, double tk) {
         double result;
         if (tgr < tk)
-            //TODO разобраться с логарифмом в формуле
-            result = tgr + (tn - tk) / ln((tn - tgr) / (tk - tgr));
+            result = tgr + (tn - tk) / Math.log((tn - tgr) / (tk - tgr));
         else result = tk;
         return result;
     }
@@ -84,9 +83,8 @@ public final class BaseCalc {
      * tgr - температура грунта, по Кельвину
      * tn - температура в начале мГ, по Кельвину
      * tk - температура в конце МГ, по Кельвину*/
-    //TODO исправить работу метода
     public static double calcAverTem(double ax, double tgr, double tn, double tk) {
-        return tgr + ((tn - tk) / ax) * (1 - exp(-ax));
+        return tgr + ((tn - tk) / ax) * (1 - Math.exp(-ax));
     }
 
     /* множитель ax для определения средней температуры
@@ -155,15 +153,13 @@ public final class BaseCalc {
         return 1810 * q * dlt / (d * mu);
     }
 
-    //TODO доделать метод
     /* лямбда- коэффициент сопротивления трения
      * re - число Рейнолдса
      * d - внутренний диаметр, мм  */
     public static double calcLambda(double re, double d) {
-        return 0.067 * (exp(ln(158 / re + 0.06 / d) * (1 / 5)));
+        return 0.067 * (Math.exp(Math.log(158 / re + 0.06 / d) * (1 / 5)));
     }
 
-    //TODO доделать метод
     /* коэффициент теплопередачи Km без учета эффекта дросселирования, кКал/м2чК
      * tn - начальная температура, по Кельвину
      * tk - конечная температура, по Кельвину
@@ -175,9 +171,8 @@ public final class BaseCalc {
      * cp - теплоемкость газа   */
     public static double calcKm(double tn, double tk, double tgr, double l,
                                 double d, double delta, double q, double cp) {
-        return -ln((tk - tgr) / (tn - tgr)) / l * q * delta * cp * 1000000 / (62.6 * (d + 20));
+        return -Math.log((tk - tgr) / (tn - tgr)) / l * q * delta * cp * 1000000 / (62.6 * (d + 20));
     }
-
 
     /* коэффициент теплопередачи с учетом эффекта дросселирования, кКал/м2чК
      * eax - множитель для KM
@@ -201,12 +196,11 @@ public final class BaseCalc {
      * di - коэффициент Джоуля-Томсона */
     public static double calcEax(double tn, double tk, double tgr, double pn, double pk,
                                  double psr, double ax, double di) {
-        //TODO уточнить что за метод ABS
         double deltat = Math.abs(tn);
         double val = 0.0;
         for (int x = 0; x < 3000; x++) {
             double dx = (ax / 100) * x;
-            double tcrush = tgr + (tn - tgr) * exp(-dx) - di * (pn * pn - pk * pk) / (2 * dx * psr) * (1 - exp(-dx));
+            double tcrush = tgr + (tn - tgr) * Math.exp(-dx) - di * (pn * pn - pk * pk) / (2 * dx * psr) * (1 - Math.exp(-dx));
             if (deltat > Math.abs(tcrush - tk)) {
                 val = dx;
                 deltat = Math.abs(tcrush - tk);
@@ -232,11 +226,10 @@ public final class BaseCalc {
      * di - коэффициент Джоуля-Томсона, К/(кгс/см2)
      * ax - множитель для TsrDross
      * l - длина МГ, км  */
-    //TODO доделать метод
     public static double calcTsrDross(double tn, double tk, double tgr, double pn, double pk,
                                       double psr, double di, double ax, double l) {
-        double t1 = tgr + (tn - tk) / (ax * l) * (1 - exp(-ax));
-        double t2 = di * (pn * pn - pk * pk) / (2 * ax * l * psr) * (1 - (1 / (ax * l)) * (1 - exp(-ax)));
+        double t1 = tgr + (tn - tk) / (ax * l) * (1 - Math.exp(-ax));
+        double t2 = di * (pn * pn - pk * pk) / (2 * ax * l * psr) * (1 - (1 / (ax * l)) * (1 - Math.exp(-ax)));
         return t1 - t2;
     }
 
@@ -266,7 +259,6 @@ public final class BaseCalc {
     }
 
     //TODO доделать комментарии
-    //TODO доделать метод
     /* pn, pk - давление на всасе и на выходе ГПА избыточное, кгс/см2
      * prt - атмосферное давлениеб мм рт.ст.
      * tn, tk - температура на всасе и на выходе ГПА, по Кельвину
@@ -277,7 +269,7 @@ public final class BaseCalc {
         double pkabs = pk + patm;
         double ppn = pnabs * 0.0980665;
         double ppk = pkabs * 0.0980665;
-        double mt = log10(ppk / ppn) / log10(tk / tn);
+        double mt = Math.log10(ppk / ppn) / Math.log10(tk / tn);
         double kpd = (adiabata - 1) / adiabata * mt * 100;
         if (kpd > 100)
             return 100.0;
@@ -330,8 +322,7 @@ public final class BaseCalc {
         qsut = (q / 1000000) * 24 * 60 * 60;
         re = calcRe(ro, qsut, dmm, mu);// число Рейнолдса
         kq = 0.587 + (5.5 / (Math.pow(re, 0.5))) + (0.348 / (Math.pow(re, 0.333))) - (110.92 / re);
-        double result = kq * s / ro * Math.sqrt(k * pnpa * ud * (Math.pow((2 / (k + 1)), ((k + 1) / (k - 1))))) * tim;
-        return result;
+        return kq * s / ro * Math.sqrt(k * pnpa * ud * (Math.pow((2 / (k + 1)), ((k + 1) / (k - 1))))) * tim;
     }
 
     /*  теоретический транспорт газа
@@ -342,41 +333,39 @@ public final class BaseCalc {
         pn = pn + patm;
         pk = pk + patm;
 
-        q:=fmod.Qf(d / 1000);
-        delta:=fmod.Delta(ro);
-        psr:=fmod.Psr(pn, pk);// среднее давление
-// первое приближение средней температуры
-        km:=1;
-        cp:=0.65;// начальное предположение
-        ax:=fmod.Ax(km, d, l, q, delta, cp);// множитель для Tsr
-        tsr:=fmod.Tsr(ax, tgr, tn, tk);// средняя температура
-        cp:=fmod.Cp(tsr, psr);// теплоемкость газа
-        di:=fmod.Di(tsr, cp);// коэффициент Джоуля-Томсона
-        eax:=fmod.Eax(tn, tk, tgr, pn, pk, psr, ax, di);
-        km:=fmod.KmDross(eax, q, delta, cp, d, l);
-// второе приближение средней температуры
-        ax:=fmod.Ax(km, d, l, q, delta, cp);// множитель для Tsr
-        tsr:=fmod.Tsr(ax, tgr, tn, tk);// средняя температура
-// теоретический транспорт газа без учета высоты над уровнем моря
-        z:=fmod.Z(ro, psr, tsr);// коэф. сжимаемости
-        mu:=fmod.Mu(ro, psr, tsr);// динамическая вязкость
-        re:=fmod.Re(ro, q, d, mu);// число Рейнолдса
-        lambda:=fmod.Lambda(re, d);// лямбда
-        qth:=
-        3.26e-7 * exp(ln(d) * (5 / 2)) * sqrt((pn * pn - pk * pk) / (delta * lambda * z * tsr * l));// теор. расход промежуточный
-// транспорт газа с учетом высоты над уровнем моря
-        re:=fmod.Re(ro, qth, d, mu);// число Рейнолдса
-        lambda:=fmod.Lambda(re, d);// лямбда
-        dH:=h2 - h1;
-        A:=62.6 * km * d / (qth * delta * cp * 1000000);// множительная чепухня
-        AL:=A * l;
-        am:=delta / (14.64 * tsr * z);
-        b:=1 + am * dH / 2;
-        qth:=
-        3.26e-7 * exp(ln(d) * (5 / 2)) * sqrt((pn * pn - pk * pk * (1 + am * dH)) / (delta * lambda * z * tsr * l * b));// теор. расход с учетом dH
-//
-        Result:=qth;
+        double q = calcQf(d / 1000);
+        double delta = calcDelta(ro);
+        double psr = calcAverPres(pn, pk); // среднее давление
+        // первое приближение средней температуры
+        double km = 1.0;
+        double cp = 0.65;// начальное предположение
+        double ax = calcAx(km, d, l, q, delta, cp); // множитель для Tsr
+        double tsr = calcAverTem(ax, tgr, tn, tk);  // средняя температура
+        cp = calcCp(tsr, psr); // теплоемкость газа
+        double di = calcDi(tsr, cp); // коэффициент Джоуля-Томсона
+        double eax = calcEax(tn, tk, tgr, pn, pk, psr, ax, di);
+        km = calcKmDross(eax, q, delta, cp, d, l);
+        // второе приближение средней температуры
+        ax = calcAx(km, d, l, q, delta, cp);// множитель для Tsr
+        tsr = calcAverTem(ax, tgr, tn, tk);// средняя температура
+        // теоретический транспорт газа без учета высоты над уровнем моря
+        double z = calcZ(tsr, psr, ro);// коэф. сжимаемости
+        double mu = calcMu(ro, psr, tsr);// динамическая вязкость
+        double re = calcRe(ro, q, d, mu);// число Рейнолдса
+        double lambda = calcLambda(re, d);// лямбда
+        double qth = 3.26e-7 * Math.exp(Math.log(d) * (5 / 2)) * Math.sqrt((pn * pn - pk * pk) /
+                (delta * lambda * z * tsr * l));// теор. расход промежуточный
+        // транспорт газа с учетом высоты над уровнем моря
+        re = calcRe(ro, qth, d, mu);// число Рейнолдса
+        lambda = calcLambda(re, d);// лямбда
+        double dH = h2 - h1;
+        double A = 62.6 * km * d / (qth * delta * cp * 1000000);// множительная чепухня
+        double AL = A * l;
+        double am = delta / (14.64 * tsr * z);
+        double b = 1 + am * dH / 2;
+        qth = 3.26e-7 * Math.exp(Math.log(d) * (5 / 2)) * Math.sqrt((pn * pn - pk * pk * (1 + am * dH))
+                / (delta * lambda * z * tsr * l * b));// теор. расход с учетом dH
 
-
+        return qth;
     }
 }

@@ -134,6 +134,6 @@ public final class Verifier {
     }
 
     public static double checkGasTransport(String txtGasTransport){
-
+        return 0;
     }
 }

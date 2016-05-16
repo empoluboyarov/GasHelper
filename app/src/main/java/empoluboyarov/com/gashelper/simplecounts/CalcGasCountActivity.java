@@ -1,4 +1,4 @@
-package empoluboyarov.com.gashelper;
+package empoluboyarov.com.gashelper.simplecounts;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import empoluboyarov.com.gashelper.R;
 import empoluboyarov.com.gashelper.core.BaseCalc;
 import empoluboyarov.com.gashelper.core.Utils;
 import empoluboyarov.com.gashelper.core.Verifier;

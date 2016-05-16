@@ -16,25 +16,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CalcZActivity"
+            android:name=".simplecounts.CalcZActivity"
             android:label="Коэффициент сжимаемости "
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".CalcAdiabataActivity"
+            android:name=".simplecounts.CalcAdiabataActivity"
             android:label="Коэффициент адиабаты"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".CalcFactDensActivity"
+            android:name=".simplecounts.CalcFactDensActivity"
             android:label="Фактическая плотность газа"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".CalcGasCountActivity"
+            android:name=".simplecounts.CalcGasCountActivity"
             android:label="Запас газа в газопроводe"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".methodics.BaseMethodicsActivity"
             android:label="@string/title_activity_base_methodics"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".simplecounts.CalcSpeedSoundActivity"></activity>
     </application>
 
 </manifest>

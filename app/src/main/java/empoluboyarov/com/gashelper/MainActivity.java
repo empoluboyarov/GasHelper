@@ -6,6 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import empoluboyarov.com.gashelper.simplecounts.CalcAdiabataActivity;
+import empoluboyarov.com.gashelper.simplecounts.CalcFactDensActivity;
+import empoluboyarov.com.gashelper.simplecounts.CalcGasCountActivity;
+import empoluboyarov.com.gashelper.simplecounts.CalcSpeedSoundActivity;
+import empoluboyarov.com.gashelper.simplecounts.CalcZActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     Button btn1;
@@ -30,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.button4:
                 intent = new Intent(this, CalcGasCountActivity.class);
+                break;
+            case R.id.button6:
+                intent = new Intent(this, CalcSpeedSoundActivity.class);
                 break;
         }
         startActivity(intent);
