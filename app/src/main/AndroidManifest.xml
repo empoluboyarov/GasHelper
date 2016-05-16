@@ -35,8 +35,14 @@
             android:name=".methodics.BaseMethodicsActivity"
             android:label="@string/title_activity_base_methodics"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".simplecounts.CalcSpeedSoundActivity" />
-        <activity android:name=".simplecounts.CalcSpeedGasActivity"></activity>
+        <activity
+            android:name=".simplecounts.CalcSpeedSoundActivity"
+            android:label="Cкорость звука в газе"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".simplecounts.CalcSpeedGasActivity"
+            android:label="Cкорость истечения газа"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

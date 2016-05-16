@@ -21,16 +21,18 @@ public class CalcSpeedGasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc_speed_gas);
 
-        etTemp = (EditText) findViewById(R.id.etTempSpeedSound);
-        etPres = (EditText) findViewById(R.id.etPresSpeedSound);
-        etDens = (EditText) findViewById(R.id.etDensSpeedSound);
-        etAtmPres = (EditText) findViewById(R.id.etAtmPresSpeedSound);
-        etNitro = (EditText) findViewById(R.id.etNitroSpeedSound);
-        tvResult = (TextView) findViewById(R.id.tvResultSpeedSound);
+        etTemp = (EditText) findViewById(R.id.etTempSpeedGas);
+        etPres = (EditText) findViewById(R.id.etPresSpeedGas);
+        etDens = (EditText) findViewById(R.id.etDensSpeedGas);
+        etAtmPres = (EditText) findViewById(R.id.etAtmPresSpeedGas);
+        etNitro = (EditText) findViewById(R.id.etNitroSpeedGas);
+        tvResult = (TextView) findViewById(R.id.tvResultSpeedGas);
 
     }
 
     public void calcSpeedGas(View view) {
+        Verifier.isCheck = true;
+
         String txtTemp = etTemp.getText().toString();
         String txtPres = etPres.getText().toString();
         String txtDens = etDens.getText().toString();
