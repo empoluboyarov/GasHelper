@@ -35,7 +35,8 @@
             android:name=".methodics.BaseMethodicsActivity"
             android:label="@string/title_activity_base_methodics"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".simplecounts.CalcSpeedSoundActivity"></activity>
+        <activity android:name=".simplecounts.CalcSpeedSoundActivity" />
+        <activity android:name=".simplecounts.CalcSpeedGasActivity"></activity>
     </application>
 
 </manifest>
