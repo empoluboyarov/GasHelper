@@ -3,11 +3,29 @@
     <string name="title_activity_calc_z">CalcZActivity</string>
     <string name="title_activity_base_methodics">Базовые методики \n\n расчета </string>
     <string name="large_text">
-        "Material is the metaphor.\n\n"
+        "Коэффициент (фактор) сжимаемости природного газа.\n\n"
 
-        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
-        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
-        "technologically advanced and open to imagination and magic.\n"
+        "p - давление газа абсолютное, МПа;\n"
+        "T - температура газа, по Кельвину;\n"
+        "Δ - относительная плотность газа. \n\n"
+
+        "Физический смысл  \n\n"
+
+        "При расчетах объемы природного газа принято измерять кубометрами при атмосферном давлении."
+        "Кажется очевидным, что в одном кубометре сжатого до ста абсолютных атмосфер газа будет сто "
+        "кубометров газа, распущенного до обычного атмосферного давления. Но это не так. Газа там "
+        "будет больше, чем сто кубометров. Например, для природного газа с абсолютной плотностью "
+        "0,7 кг/м3 при абсолютном давлении 100 кгс/см2 (эта единица измерения примерно равна достаточно"
+        "условному понятию «атмосфера») и температуре 20 градусов Цельсия в одном кубическом метре "
+        "геометрического объема будет находиться примерно 123,5 кубометра газа (пересчитанного "
+        "к атмосферному давлению).\n\n"
+
+        "Вопреки очевидности, природный газ при сжатии «вбирает» в себя «лишние» кубометры, словно"
+        "размещая этот излишек в каком-то дополнительном подпространстве. Это чудо - отличительная "
+        "особенность природного газа от газа идеального, а характеризуется оно коэффициентом сжимаемости"
+        "газа. Другое название - фактор сжимаемости. Еще одно неофициальное название - "
+        "коэффициент сверхсжимаемости.\n\n"
+
         "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
         "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
         "flexibility of the material creates new affordances that supercede those in the physical "

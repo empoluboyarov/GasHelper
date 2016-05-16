@@ -16,24 +16,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void onClick(View view){
-        switch (view.getId()){
+    public void onClick(View view) {
+        Intent intent = null;
+        switch (view.getId()) {
             case R.id.button:
-                Intent intent = new Intent(this, CalcZActivity.class);
-                startActivity(intent);
+                intent = new Intent(this, CalcZActivity.class);
                 break;
             case R.id.button2:
-                Intent intent1 = new Intent(this, CalcAdiabataActivity.class);
-                startActivity(intent1);
+                intent = new Intent(this, CalcAdiabataActivity.class);
                 break;
             case R.id.button3:
-                Intent intent2 = new Intent(this, CalcFactDensActivity.class);
-                startActivity(intent2);
+                intent = new Intent(this, CalcFactDensActivity.class);
                 break;
             case R.id.button4:
-                Intent intent3 = new Intent(this, CalcGasCountActivity.class);
-                startActivity(intent3);
+                intent = new Intent(this, CalcGasCountActivity.class);
                 break;
         }
+        startActivity(intent);
     }
 }

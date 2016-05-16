@@ -48,7 +48,7 @@ public class CalcFactDensActivity extends AppCompatActivity {
             double pabs = pres + patm;// абсолютное давление
             temp = temp + 273.15;// температура по Кельвину
             double z = BaseCalc.calcZ(temp, pabs, dens);
-            double result = BaseCalc.calcFactDens(dens, pabs, temp, z);
+            double result = BaseCalc.calcRoFact(dens, pabs, temp, z);
             tvResult.setText("" + result);
         } else tvResult.setText("" + 0.000);
     }

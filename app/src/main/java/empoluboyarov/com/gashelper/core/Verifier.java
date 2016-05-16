@@ -1,6 +1,6 @@
 package empoluboyarov.com.gashelper.core;
 
-public class Verifier {
+public final class Verifier {
 
     public static boolean isCheck;
     public static String message = null;
@@ -85,7 +85,7 @@ public class Verifier {
                 message = "Молярная составляющая азота: от 0,1 до 25 % !";
                 isCheck = false;
             } else {
-                result = nitro;
+                result = nitro/100;
             }
         }
         return result;
@@ -102,7 +102,7 @@ public class Verifier {
                 message = "Длина газопровода: от 0,001 до 250 км!";
                 isCheck = false;
             } else {
-                result = length;
+                result = length*1000;
             }
         }
         return result;
@@ -119,9 +119,21 @@ public class Verifier {
                 message = "Внутренний диаметр трубы: от 5 до 2500 мм!";
                 isCheck = false;
             } else {
-                result = diameter;
+                result = diameter/1000;
             }
         }
         return result;
+    }
+
+    public static void checkDeltaPres(double presStart, double presFin){
+
+    }
+
+    public static void checkDeltaTemp(double tempStart, double tempFin){
+
+    }
+
+    public static double checkGasTransport(String txtGasTransport){
+
     }
 }

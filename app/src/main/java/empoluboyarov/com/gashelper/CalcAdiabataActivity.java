@@ -49,7 +49,6 @@ public class CalcAdiabataActivity extends AppCompatActivity {
             double patm = atmPres * 0.001359511;// атмосферное давление из мм рт. ст. в килограммы
             double pabs = pres + patm;// абсолютное давление
             temp = temp + 273.15;// температура по Кельвину
-            nitrogen = nitrogen/100;
             double result = BaseCalc.calcAdiabata(temp, pabs, dens, nitrogen);
             tvResult.setText("" + result);
         } else tvResult.setText("" + 0.000);
