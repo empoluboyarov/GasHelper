@@ -144,6 +144,7 @@ public class DynamicCountActivity extends AppCompatActivity {
             for (int x = 0; x < 500; x++) {
                 Utils.stock = Utils.stock + astock[x];
             }
+            Utils.stock += astock[498];
 
             Utils.vg = (3.141593 * Utils.dm * Utils.dm) / 4 * Utils.lm;
 
