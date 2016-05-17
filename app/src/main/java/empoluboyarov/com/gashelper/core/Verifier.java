@@ -85,7 +85,7 @@ public final class Verifier {
                 message = "Молярная составляющая азота: от 0,1 до 25 % !";
                 isCheck = false;
             } else {
-                result = nitro/100;
+                result = nitro / 100;
             }
         }
         return result;
@@ -102,7 +102,8 @@ public final class Verifier {
                 message = "Длина газопровода: от 0,001 до 250 км!";
                 isCheck = false;
             } else {
-                result = length*1000;
+                result = length;
+                Utils.lm = length * 1000;
             }
         }
         return result;
@@ -119,21 +120,41 @@ public final class Verifier {
                 message = "Внутренний диаметр трубы: от 5 до 2500 мм!";
                 isCheck = false;
             } else {
-                result = diameter/1000;
+                result = diameter;
+                Utils.dm = diameter / 1000;
             }
         }
         return result;
     }
 
-    public static void checkDeltaPres(double presStart, double presFin){
-
+    public static void checkDeltaPres(double presStart, double presFin) {
+        if (presFin >= presStart) {
+            isCheck = false;
+            message = "Давление в конце МГ должно быть меньше, чем в начале!";
+        }
     }
 
-    public static void checkDeltaTemp(double tempStart, double tempFin){
-
+    public static void checkDeltaTemp(double tempStart, double tempFin) {
+        if (tempFin >= tempStart) {
+            isCheck = false;
+            message = "Температура газа в конце МГ должна быть меньше, чем в начале!";
+        }
     }
 
-    public static double checkGasTransport(String txtGasTransport){
-        return 0;
+    public static double checkGasTransport(String txtGasTransport) {
+        message = null;
+        if (txtGasTransport == null || txtGasTransport.isEmpty()) {
+            message = "Введите корректное значение объема транспорта газа.";
+            isCheck = false;
+        } else {
+            double gasTransport = Double.valueOf(txtGasTransport);
+            if (gasTransport <= 0) {
+                message = "Фактический объем транспорта газа должен быть больше ноля!";
+                isCheck = false;
+            } else {
+                result = gasTransport / 1000 * 24;
+            }
+        }
+        return result;
     }
 }

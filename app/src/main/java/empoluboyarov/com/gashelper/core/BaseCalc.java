@@ -5,7 +5,7 @@ public final class BaseCalc {
 
     /* относительная плотность газа
      * ro - абсолютная плотность газа, кг/м3  */
-    private static double calcDelta(double ro) {
+    public static double calcDelta(double ro) {
         return ro / 1.2044;
     }
 
@@ -63,7 +63,7 @@ public final class BaseCalc {
     * pn - начальное абсолютное давление, кгс/см2
     * pk - конечное абсолютное давление, кгс/см2 */
     public static double calcAverPres(double pn, double pk) {
-        return 2 / 3 * (pn + (pk * pk) / (pn + pk));
+        return  0.66666666666666666667 * (pn + (pk * pk) / (pn + pk));
     }
 
     /* средняя температура газа, по Кельвину (простой метод)

@@ -44,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.button7:
                 intent = new Intent(this, CalcSpeedGasActivity.class);
                 break;
+            case R.id.button9:
+                intent = new Intent(this, DynamicCountActivity.class);
+                break;
         }
         startActivity(intent);
     }
