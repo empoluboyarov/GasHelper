@@ -2,6 +2,21 @@
     <string name="app_name">GasHelper</string>
     <string name="title_activity_calc_z">CalcZActivity</string>
     <string name="title_activity_base_methodics">Базовые методики \n\n расчета </string>
+    <string-array name="main">
+        <item>Rоэффициент сжимаемости</item>
+        <item>Показатель адиабаты</item>
+        <item>Фактическая плотность газа</item>
+        <item>Запас газа в локкализованом участке МГ</item>
+        <item>Скорость звука в сжатом газе</item>
+        <item>Скорость истечения газа</item>
+        <item>Запас газа в действующем газопроводе</item>
+        <item>Продувка оборудования</item>
+        <item>Пропускная способность участка МГ</item>
+        <item>Гидравлическая эффективность МГ</item>
+
+    </string-array>
+    
+    
     <string name="large_text">
         "Коэффициент (фактор) сжимаемости природного газа.\n\n"
 

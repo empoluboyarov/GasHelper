@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 
 import empoluboyarov.com.gashelper.simplecounts.CalcAdiabataActivity;
 import empoluboyarov.com.gashelper.simplecounts.CalcFactDensActivity;
@@ -21,33 +23,32 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-
-    public void onClick(View view) {
-        Intent intent = null;
-        switch (view.getId()) {
-            case R.id.button:
-                intent = new Intent(this, CalcZActivity.class);
-                break;
-            case R.id.button2:
-                intent = new Intent(this, CalcAdiabataActivity.class);
-                break;
-            case R.id.button3:
-                intent = new Intent(this, CalcFactDensActivity.class);
-                break;
-            case R.id.button4:
-                intent = new Intent(this, CalcGasCountActivity.class);
-                break;
-            case R.id.button6:
-                intent = new Intent(this, CalcSpeedSoundActivity.class);
-                break;
-            case R.id.button7:
-                intent = new Intent(this, CalcSpeedGasActivity.class);
-                break;
-            case R.id.button9:
-                intent = new Intent(this, DynamicCountActivity.class);
-                break;
-        }
-        startActivity(intent);
+        AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if (i == 0)
+                    startActivity(new Intent(MainActivity.this, CalcZActivity.class));
+                else if (i == 1)
+                    startActivity(new Intent(MainActivity.this, CalcAdiabataActivity.class));
+                else if (i == 2)
+                    startActivity(new Intent(MainActivity.this, CalcFactDensActivity.class));
+                else if (i == 3)
+                    startActivity(new Intent(MainActivity.this, CalcGasCountActivity.class));
+                else if (i == 4)
+                    startActivity(new Intent(MainActivity.this, CalcSpeedSoundActivity.class));
+                else if (i == 5)
+                    startActivity(new Intent(MainActivity.this, CalcSpeedGasActivity.class));
+                else if (i == 6)
+                    startActivity(new Intent(MainActivity.this, DynamicCountActivity.class));
+                else if (i == 7)
+                    startActivity(new Intent(MainActivity.this, CalcFactDensActivity.class));
+                else if (i == 8)
+                    startActivity(new Intent(MainActivity.this, CalcFactDensActivity.class));
+                else if (i == 9)
+                    startActivity(new Intent(MainActivity.this, CalcFactDensActivity.class));
+            }
+        };
+        ListView listView = (ListView) findViewById(R.id.list_main);
+        listView.setOnItemClickListener(listener);
     }
 }

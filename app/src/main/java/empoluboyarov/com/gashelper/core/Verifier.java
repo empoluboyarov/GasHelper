@@ -157,4 +157,73 @@ public final class Verifier {
         }
         return result;
     }
+
+    public static double checkFlowTime(String txtTim){
+        message = null;
+        if (txtTim == null || txtTim.isEmpty()) {
+            message = "Введите корректное значение время истечения газа";
+            isCheck = false;
+        } else {
+            double tim = Double.valueOf(txtTim);
+            if (tim < 1 || tim > 3600) {
+                message = "Время истечения газа, секунд: от 1 до 3600!";
+                isCheck = false;
+            } else {
+                result = tim;
+            }
+        }
+        return result;
+    }
+
+    public static double checkSmallDiameter(String txtD) {
+
+        message = null;
+        if (txtD == null || txtD.isEmpty()) {
+            message = "Введите корректное значение внутреннего диаметра.";
+            isCheck = false;
+        } else {
+            double diameter = Double.valueOf(txtD);
+            if (diameter < 5 || diameter > 500) {
+                message = "Внутренний диаметр должен быть в диапазоне от 5 до 500 мм!";
+                isCheck = false;
+            } else {
+                result = diameter;
+            }
+        }
+        return result;
+    }
+
+    public static double checkSmallLength(String txtL) {
+        message = null;
+        if (txtL == null || txtL.isEmpty()) {
+            message = "Введите корректное значение длины.";
+            isCheck = false;
+        } else {
+            double length = Double.valueOf(txtL);
+            if (length < 1 || length > 50000) {
+                message = "Длина газопровода: от 1 до 50000 м!";
+                isCheck = false;
+            } else {
+                result = length;
+            }
+        }
+        return result;
+    }
+
+    public static double checkVisota(String txtH){
+        message = null;
+        if (txtH == null || txtH.isEmpty()) {
+            message = "Введите корректное значение высоты над уровнем моря.";
+            isCheck = false;
+        } else {
+            double h = Double.valueOf(txtH);
+            if (h < -415 || h > 8839) {
+                message = "Высота над уровнем моря, м: от -415 до 8839!";
+                isCheck = false;
+            } else {
+                result = h;
+            }
+        }
+        return result;
+    }
 }

@@ -8,6 +8,9 @@ import android.widget.Toast;
  */
 public final class Utils {
 
+    public static final double TEMP_PRIVEDENIYA = 20;
+    public static final double PRES_PRIVEDNIYA = 760;
+
     public static double pn;
     public static double pk;
     public static double prt;
@@ -27,6 +30,16 @@ public final class Utils {
     public static double z;
     public static double stock;
     public static double vg;
+    public static double azot;
+    public static double tim;
+    public static double dkmm;
+    public static double expr;
+    public static double qth;
+    public static double h1;
+    public static double h2;
+    public static double hydro;
+    public static double upspeed;
+    public static double downspeed;
 
     public static void makeToast(Context context){
 

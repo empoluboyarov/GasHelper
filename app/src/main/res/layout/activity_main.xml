@@ -10,120 +10,12 @@
     tools:context="empoluboyarov.com.gashelper.MainActivity">
 
 
-    <Button
-        android:layout_width="wrap_content"
+    <ListView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Сжимаемость"
-        android:id="@+id/button"
-        android:onClick="onClick"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:id="@+id/list_main"
+        android:entries="@array/main">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Адиабата"
-        android:id="@+id/button2"
-        android:onClick="onClick"
-        android:layout_alignTop="@+id/button"
-        android:layout_alignParentEnd="true" />
+    </ListView>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Фактическая плотность"
-        android:id="@+id/button3"
-        android:onClick="onClick"
-        android:layout_below="@+id/button2"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Запас газа в МГ"
-        android:id="@+id/button4"
-        android:onClick="onClick"
-        android:layout_below="@+id/button2"
-        android:layout_toEndOf="@+id/button3" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Скорость звука"
-        android:id="@+id/button6"
-        android:onClick="onClick"
-        android:layout_below="@+id/button4"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Скорость истечения"
-        android:id="@+id/button7"
-        android:onClick="onClick"
-        android:layout_alignTop="@+id/button6"
-        android:layout_alignEnd="@+id/button4" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="юююююююю"
-        android:onClick="onClick"
-        android:id="@+id/button8"
-        android:layout_below="@+id/button14"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Запас в действующем"
-        android:id="@+id/button9"
-        android:onClick="onClick"
-        android:layout_below="@+id/button7"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:onClick="onClick"
-        android:id="@+id/button10"
-        android:layout_below="@+id/button8"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:onClick="onClick"
-        android:id="@+id/button11"
-        android:layout_below="@+id/button9"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:onClick="onClick"
-        android:id="@+id/button12"
-        android:layout_below="@+id/button11"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:onClick="onClick"
-        android:id="@+id/button13"
-        android:layout_below="@+id/button10"
-        android:layout_alignStart="@+id/button10" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button14"
-        android:onClick="onClick"
-        android:layout_alignTop="@+id/button9"
-        android:layout_alignEnd="@+id/button4" />
 </RelativeLayout>

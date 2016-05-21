@@ -22,7 +22,7 @@ public final class BaseCalc {
     public static double calcZ(double t, double p, double ro) {
         double dlt = calcDelta(ro);
         p = calcPres(p);
-        return 1 - ((10.2 * p - 6) * (0.345 / 100 * dlt - 0.446 / 1000) + 0.015) * (1.3 - 0.0144 * (t - 283.2));
+        return 1.0 - ((10.2 * p - 6.0) * (0.345 / 100.0 * dlt - 0.446 / 1000.0) + 0.015) * (1.3 - 0.0144 * (t - 283.2));
     }
 
     /* коэффициент адиабатты
@@ -32,9 +32,9 @@ public final class BaseCalc {
      * t - температура, по Кельвину  */
     public static double calcAdiabata(double t, double p, double ro, double azot) {
         double pmpa = calcPres(p);
-        double k1 = 1.556 * (1 + 0.074 * azot);
-        double k2 = 3.9 / 10000 * t * (1 - 0.68 * azot) + 0.208 * ro; // последний плюс - не ошибка! потом будем отнимать все сразу
-        double k3 = Math.pow((pmpa / t), 1.43) * (384 * (1 - azot) * (Math.pow((pmpa / t), 0.8)) + 26.4 * azot);
+        double k1 = 1.556 * (1.0 + 0.074 * azot);
+        double k2 = 3.9 / 10000.0 * t * (1.0 - 0.68 * azot) + 0.208 * ro; // последний плюс - не ошибка! потом будем отнимать все сразу
+        double k3 = Math.pow((pmpa / t), 1.43) * (384 * (1.0 - azot) * (Math.pow((pmpa / t), 0.8)) + 26.4 * azot);
         return k1 - k2 + k3; // (Сарданашвили, стр. 44, формула 1.69)
     }
 
@@ -84,7 +84,7 @@ public final class BaseCalc {
      * tn - температура в начале мГ, по Кельвину
      * tk - температура в конце МГ, по Кельвину*/
     public static double calcAverTem(double ax, double tgr, double tn, double tk) {
-        return tgr + ((tn - tk) / ax) * (1 - Math.exp(-ax));
+        return tgr + ((tn - tk) / ax) * (1.0 - Math.exp(-ax));
     }
 
     /* множитель ax для определения средней температуры
@@ -102,14 +102,14 @@ public final class BaseCalc {
      * tsr - средняя температура, по Кельвину
      * psr - среднее давление, кгс/см2 */
     public static double calcCp(double tsr, double psr) {
-        return 0.405 + 4.39e-4 * tsr + 46000 * (psr - 1) / (tsr * tsr * tsr);
+        return 0.405 + 4.39e-4 * tsr + 46000.0 * (psr - 1.0) / (tsr * tsr * tsr);
     }
 
     /* коэффициент Джоуля-Томсона, К/(кгс/см2)
      * tsr - средняя температура, по Кельвину
      * cp - теплоемкость газа */
     public static double calcDi(double tsr, double cp) {
-        return (23000 / (tsr * tsr) - 0.035) / cp;
+        return (23000.0 / (tsr * tsr) - 0.035) / cp;
     }
 
     /* скорость звука в газе, м/с
@@ -129,8 +129,8 @@ public final class BaseCalc {
     public static double calcSpeedGas(double adiabata, double rofact, double pn, double pk) {
         double pnmpa = calcPres(pn);
         double pkmpa = calcPres(pk);
-        return Math.sqrt(2 * adiabata / (adiabata - 1) * pnmpa * 1000000 / rofact *
-                (1 - Math.pow(pkmpa / pnmpa, (adiabata - 1) / adiabata)));
+        return Math.sqrt(2.0 * adiabata / (adiabata - 1.0) * pnmpa * 1000000.0 / rofact *
+                (1.0 - Math.pow(pkmpa / pnmpa, (adiabata - 1.0) / adiabata)));
     }
 
     /* некритическое истечение
@@ -140,7 +140,7 @@ public final class BaseCalc {
      * pk - конечное абсолютное давление, кгс/см2 */
     public static double calcExpNoCrit(double s, double tim, double pn, double pk) {
         double dp = pn - pk;
-        return 110 * s * dp * tim;
+        return 110.0 * s * dp * tim;
     }
 
     /* число Рейнолдса
@@ -150,14 +150,14 @@ public final class BaseCalc {
      * mu - динамическая вязкость */
     public static double calcRe(double ro, double q, double d, double mu) {
         double dlt = calcDelta(ro);
-        return 1810 * q * dlt / (d * mu);
+        return 1810.0 * q * dlt / (d * mu);
     }
 
     /* лямбда- коэффициент сопротивления трения
      * re - число Рейнолдса
      * d - внутренний диаметр, мм  */
     public static double calcLambda(double re, double d) {
-        return 0.067 * (Math.exp(Math.log(158 / re + 0.06 / d) * (1 / 5)));
+        return 0.067 * (Math.exp(Math.log(158.0 / re + 0.06 / d) * (1.0 / 5.0)));
     }
 
     /* коэффициент теплопередачи Km без учета эффекта дросселирования, кКал/м2чК
@@ -171,7 +171,7 @@ public final class BaseCalc {
      * cp - теплоемкость газа   */
     public static double calcKm(double tn, double tk, double tgr, double l,
                                 double d, double delta, double q, double cp) {
-        return -Math.log((tk - tgr) / (tn - tgr)) / l * q * delta * cp * 1000000 / (62.6 * (d + 20));
+        return -Math.log((tk - tgr) / (tn - tgr)) / l * q * delta * cp * 1000000.0 / (62.6 * (d + 20.0));
     }
 
     /* коэффициент теплопередачи с учетом эффекта дросселирования, кКал/м2чК
@@ -199,8 +199,8 @@ public final class BaseCalc {
         double deltat = Math.abs(tn);
         double val = 0.0;
         for (int x = 0; x < 3000; x++) {
-            double dx = (ax / 100) * x;
-            double tcrush = tgr + (tn - tgr) * Math.exp(-dx) - di * (pn * pn - pk * pk) / (2 * dx * psr) * (1 - Math.exp(-dx));
+            double dx = (ax / 100.0) * x;
+            double tcrush = tgr + (tn - tgr) * Math.exp(-dx) - di * (pn * pn - pk * pk) / (2.0 * dx * psr) * (1.0 - Math.exp(-dx));
             if (deltat > Math.abs(tcrush - tk)) {
                 val = dx;
                 deltat = Math.abs(tcrush - tk);
@@ -228,8 +228,8 @@ public final class BaseCalc {
      * l - длина МГ, км  */
     public static double calcTsrDross(double tn, double tk, double tgr, double pn, double pk,
                                       double psr, double di, double ax, double l) {
-        double t1 = tgr + (tn - tk) / (ax * l) * (1 - Math.exp(-ax));
-        double t2 = di * (pn * pn - pk * pk) / (2 * ax * l * psr) * (1 - (1 / (ax * l)) * (1 - Math.exp(-ax)));
+        double t1 = tgr + (tn - tk) / (ax * l) * (1.0 - Math.exp(-ax));
+        double t2 = di * (pn * pn - pk * pk) / (2.0 * ax * l * psr) * (1.0 - (1.0 / (ax * l)) * (1.0 - Math.exp(-ax)));
         return t1 - t2;
     }
 
@@ -253,8 +253,8 @@ public final class BaseCalc {
         double tpk = 155.24 * (0.564 + 1.205 * dlt);
         double ppr = psr / ppk;
         double tpr = tsr / tpk;
-        double musi = 5.1e-6 * (1 + ro * (1.1 - 0.25 * ro)) * (0.037 + tpr * (1 - 0.104 * tpr)) *
-                (1 + (ppr * ppr) / (30 * (tpr - 1)));
+        double musi = 5.1e-6 * (1.0 + ro * (1.1 - 0.25 * ro)) * (0.037 + tpr * (1.0 - 0.104 * tpr)) *
+                (1.0 + (ppr * ppr) / (30.0 * (tpr - 1.0)));
         return musi / 9.81;
     }
 
@@ -270,7 +270,7 @@ public final class BaseCalc {
         double ppn = pnabs * 0.0980665;
         double ppk = pkabs * 0.0980665;
         double mt = Math.log10(ppk / ppn) / Math.log10(tk / tn);
-        double kpd = (adiabata - 1) / adiabata * mt * 100;
+        double kpd = (adiabata - 1) / adiabata * mt * 100.0;
         if (kpd > 100)
             return 100.0;
         else return kpd;
@@ -284,7 +284,7 @@ public final class BaseCalc {
      * privt - Кельвин
      * tn - Кельвин */
     public static double calcQtoP(double q, double v, double z, double privp, double privt, double tn) {
-        return (q * 1000 * privp * tn * z) / (v * privt);
+        return (q * 1000.0 * privp * tn * z) / (v * privt);
     }
 
     /* критическое истечение
@@ -304,7 +304,7 @@ public final class BaseCalc {
         double pkmpa = pk * 0.0980665;// МПа
         double pnpa = pnmpa * 1e6;// Па
         double pkpa = pkmpa * 1e6;// МПа
-        double dmm = d * 1000;// диаметр в мм
+        double dmm = d * 1000.0;// диаметр в мм
 
         double z = calcZ(tn, pn, ro); // давление - в килограммах
         double k = calcAdiabata(tn, pn, ro, azot); // адиабата. Давление - в килограммах
@@ -317,23 +317,23 @@ public final class BaseCalc {
 
         double s = (3.141593 * d * d) / 4;
         double ud = calcRoFact(ro, pn, tn, z);
-        double q = kq * s / ro * Math.sqrt(k * pnpa * ud * (Math.pow((2 / (k + 1)), ((k + 1) / (k - 1))))) * 1;
+        double q = kq * s / ro * Math.sqrt(k * pnpa * ud * (Math.pow((2.0 / (k + 1)), ((k + 1.0) / (k - 1.0))))) * 1.0;
 
-        qsut = (q / 1000000) * 24 * 60 * 60;
+        qsut = (q / 1000000.0) * 24.0 * 60.0 * 60.0;
         re = calcRe(ro, qsut, dmm, mu);// число Рейнолдса
         kq = 0.587 + (5.5 / (Math.pow(re, 0.5))) + (0.348 / (Math.pow(re, 0.333))) - (110.92 / re);
-        return kq * s / ro * Math.sqrt(k * pnpa * ud * (Math.pow((2 / (k + 1)), ((k + 1) / (k - 1))))) * tim;
+        return kq * s / ro * Math.sqrt(k * pnpa * ud * (Math.pow((2.0 / (k + 1.0)), ((k + 1.0) / (k - 1.0))))) * tim;
     }
 
     /*  теоретический транспорт газа
      TODO дописать комментарий */
-    public static double QTheor(double ro, double pn, double pk, double prt, double tn,
-                                double tk, double tgr, double l, double d, double h1, double h2) {
+    public static double calcQTheor(double ro, double pn, double pk, double prt, double tn,
+                                    double tk, double tgr, double l, double d, double h1, double h2) {
         double patm = prt * 0.001359511;
         pn = pn + patm;
         pk = pk + patm;
 
-        double q = calcQf(d / 1000);
+        double q = calcQf(d / 1000.0);
         double delta = calcDelta(ro);
         double psr = calcAverPres(pn, pk); // среднее давление
         // первое приближение средней температуры
@@ -353,7 +353,7 @@ public final class BaseCalc {
         double mu = calcMu(ro, psr, tsr);// динамическая вязкость
         double re = calcRe(ro, q, d, mu);// число Рейнолдса
         double lambda = calcLambda(re, d);// лямбда
-        double qth = 3.26e-7 * Math.exp(Math.log(d) * (5 / 2)) * Math.sqrt((pn * pn - pk * pk) /
+        double qth = 3.26e-7 * Math.exp(Math.log(d) * (5.0 / 2.0)) * Math.sqrt((pn * pn - pk * pk) /
                 (delta * lambda * z * tsr * l));// теор. расход промежуточный
         // транспорт газа с учетом высоты над уровнем моря
         re = calcRe(ro, qth, d, mu);// число Рейнолдса
@@ -362,8 +362,8 @@ public final class BaseCalc {
         double A = 62.6 * km * d / (qth * delta * cp * 1000000);// множительная чепухня
         double AL = A * l;
         double am = delta / (14.64 * tsr * z);
-        double b = 1 + am * dH / 2;
-        qth = 3.26e-7 * Math.exp(Math.log(d) * (5 / 2)) * Math.sqrt((pn * pn - pk * pk * (1 + am * dH))
+        double b = 1 + am * dH / 2.0;
+        qth = 3.26e-7 * Math.exp(Math.log(d) * (5.0 / 2.0)) * Math.sqrt((pn * pn - pk * pk * (1.0 + am * dH))
                 / (delta * lambda * z * tsr * l * b));// теор. расход с учетом dH
 
         return qth;
