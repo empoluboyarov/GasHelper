@@ -158,7 +158,7 @@ public final class Verifier {
         return result;
     }
 
-    public static double checkFlowTime(String txtTim){
+    public static double checkFlowTime(String txtTim) {
         message = null;
         if (txtTim == null || txtTim.isEmpty()) {
             message = "Введите корректное значение время истечения газа";
@@ -170,6 +170,23 @@ public final class Verifier {
                 isCheck = false;
             } else {
                 result = tim;
+            }
+        }
+        return result;
+    }
+
+    public static double checkHydro(String txtHydro) {
+        message = null;
+        if (txtHydro == null || txtHydro.isEmpty()) {
+            message = "Введите корректное значение коэффициента гидравлической эффективности";
+            isCheck = false;
+        } else {
+            double hydro = Double.valueOf(txtHydro);
+            if (hydro < 0.5 || hydro > 1) {
+                message = "Предполагаемый коэффициент гидравлической эффективности: от 0,5 до 1!";
+                isCheck = false;
+            } else {
+                result = hydro;
             }
         }
         return result;
@@ -210,7 +227,7 @@ public final class Verifier {
         return result;
     }
 
-    public static double checkVisota(String txtH){
+    public static double checkVisota(String txtH) {
         message = null;
         if (txtH == null || txtH.isEmpty()) {
             message = "Введите корректное значение высоты над уровнем моря.";

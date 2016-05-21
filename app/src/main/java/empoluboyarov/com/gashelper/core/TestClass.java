@@ -6,12 +6,13 @@ package empoluboyarov.com.gashelper.core;
 public class TestClass {
 
     public static void main(String[] args) {
-        calc1(); //расчет расхода газа при продувке оборудования
-        calc2(); // расчет пропускной способности участка мг
-        calc3(); // расчет гидравлической эффективности МГ
+        //calc1(); //расчет расхода газа при продувке оборудования
+        //calc2(); // расчет пропускной способности участка мг
+        //calc3(); // расчет гидравлической эффективности МГ
+        calc4(); //расчет среднего давления и средней температуры
     }
 
-    private static void calc1() {  // расчет продувки оборудования
+    private static void calc1() {
 
         //TODO перед импортом убрать не нужные System out println
 
@@ -103,7 +104,86 @@ public class TestClass {
     }
 
     private static void calc2() {
+        boolean critMode = false;
+        Verifier.isCheck = true;
 
+        String txtRo = "0.691";
+        String txtAzot = "1.25";
+        String txtPn = "51.3";
+        String txtPk = "46.9";
+        String txtPrt = "751.1";
+        String txtTn = "25.5";
+        String txtTk = "15.1";
+        String txtTgr = "8.7";
+        String txtHydro = "0.96";
+        String txtL = "55.155";
+        String txtD = "1195";
+        String txtHn = "155";
+        String txtHk = "215";
+
+
+        Utils.ro = Verifier.checkDensity(txtRo);
+        Utils.azot = Verifier.checkNitrogen(txtAzot);
+        Utils.pn = Verifier.checkPressure(txtPn);
+        Utils.pk = Verifier.checkPressure(txtPk);
+        Utils.prt = Verifier.checkAtmPressure(txtPrt);
+        Verifier.checkDeltaPres(Utils.pn, Utils.pk);
+        Utils.tn = Verifier.checkTemperature(txtTn);
+        Utils.tk = Verifier.checkTemperature(txtTk);
+        Verifier.checkDeltaTemp(Utils.tn, Utils.tk);
+        Utils.tgr = Verifier.checkTemperature(txtTgr);
+        Utils.hydro = Verifier.checkHydro(txtHydro);
+        Utils.lkm = Verifier.checkLength(txtL);
+        Utils.dmm = Verifier.checkDiameter(txtD);
+        Utils.h1 = Verifier.checkVisota(txtHn);
+        Utils.h2 = Verifier.checkVisota(txtHk);
+
+        if (Verifier.isCheck) {
+            double patm = Utils.prt * 0.001359511;
+            double pkabs = Utils.pk + patm;
+            Utils.tn = Utils.tn + 273.15;
+            Utils.tk = Utils.tk + 273.15;
+            Utils.tgr = Utils.tgr + 273.15;
+//
+            double pnabs = Utils.pn + patm;
+            double dm = Utils.dmm / 1000.0;
+//
+            Utils.qth = BaseCalc.calcQTheor(Utils.ro, Utils.pn, Utils.pk, Utils.prt, Utils.tn, Utils.tk,
+                    Utils.tgr, Utils.lkm, Utils.dmm, Utils.h1, Utils.h2);
+            Utils.qth = Utils.qth * Utils.hydro;
+            Utils.expr = BaseCalc.calcExpCritNew(Utils.azot, Utils.ro, Utils.dmm / 1000.0,
+                    pnabs, pkabs, Utils.tn, Utils.tk, 1 * 60 * 60);
+            Utils.expr = Utils.expr / 1000.0 / 1000.0 * 24;
+// сверка с критическим истечением газа:
+            if (Utils.qth > Utils.expr) {
+                Utils.qth = Utils.expr;
+                critMode = true;
+            }
+//
+            double qday = Utils.qth;
+// upstream
+            Utils.z = BaseCalc.calcZ(Utils.tn, pnabs, Utils.ro);
+            double qmin = 2.45 * qday * Utils.z * Utils.tn / pnabs;
+            double s = 3.14159 * dm * dm / 4.0;
+            double v = qmin / s;
+            Utils.upspeed = v / 60.0;// линейная скорость газа в начале МГ
+// downstream
+            Utils.z = BaseCalc.calcZ(Utils.tk, pnabs, Utils.ro);
+
+            qmin = 2.45 * qday * Utils.z * Utils.tk / pkabs;
+            s = 3.14159 * dm * dm / 4.0;
+            v = qmin / s;
+            Utils.downspeed = v / 60.0;// линейная скорость газа в конце МГ
+
+            System.out.println("Теоретический объем транспорта газа: " + Utils.qth / 24.0 * 1000 + " тыс. м3/час");
+            System.out.println("при предположительном коэффициенте гидравлической эффективности: " + Utils.hydro);
+            if (critMode)
+                System.out.println("Внимание! Режим критического истечения газа в атмосферу!");
+
+            System.out.println("Линейная скорость потока газа:");
+            System.out.println("В начале газопровода: " + Utils.upspeed + " м/сек");
+            System.out.println("В конце газопровода: " + Utils.downspeed + " м/сек");
+        }
     }
 
     private static void calc3() {
@@ -180,13 +260,89 @@ public class TestClass {
             Utils.downspeed = v / 60.0;
 
             System.out.println("Коэффициент гидравлической эффективности: " + Utils.hydro);
-            System.out.println("при теоретическом объеме транспорта газа: " + Utils.qth  + " тыс.м3/час");
+            System.out.println("при теоретическом объеме транспорта газа: " + Utils.qth + " тыс.м3/час");
             if (critMode)
                 System.out.println("Внимание! Режим критического истечения газа в атмосферу!");
 
             System.out.println("Линейная скорость потока газа:  ");
             System.out.println("В начале газопровода: " + Utils.upspeed + " м/сек");
             System.out.println("В конце газопровода: " + Utils.downspeed + " м/сек");
+        }
+    }
+
+    private static void calc4() {
+        Verifier.isCheck = true;
+
+        String txtRo = "0.691";
+
+        String txtPn = "50";
+        String txtPk = "45";
+        String txtPrt = "750";
+        String txtTn = "22";
+        String txtTk = "13";
+        String txtTgr = "8";
+        String txtQf = "1355";
+        String txtL = "55";
+        String txtD = "1200";
+
+
+        Utils.ro = Verifier.checkDensity(txtRo);
+        Utils.pn = Verifier.checkPressure(txtPn);
+        Utils.pk = Verifier.checkPressure(txtPk);
+        Utils.prt = Verifier.checkAtmPressure(txtPrt);
+        Verifier.checkDeltaPres(Utils.pn, Utils.pk);
+        Utils.tn = Verifier.checkTemperature(txtTn);
+        Utils.tk = Verifier.checkTemperature(txtTk);
+        Verifier.checkDeltaTemp(Utils.tn, Utils.tk);
+        Utils.tgr = Verifier.checkTemperature(txtTgr);
+        Utils.qf = Verifier.checkGasTransport(txtQf);
+        Utils.lkm = Verifier.checkLength(txtL);
+        Utils.dmm = Verifier.checkDiameter(txtD);
+
+
+        if (Verifier.isCheck) {
+            double patm = Utils.prt * 0.001359511;
+            double pnabs = Utils.pn + patm;
+            double pkabs = Utils.pk + patm;
+            Utils.privp = Utils.privp * 0.001359511;
+            Utils.tn = Utils.tn + 273.15;
+            Utils.tk = Utils.tk + 273.15;
+            Utils.tgr = Utils.tgr + 273.15;
+            Utils.privt = Utils.privt + 273.15;
+//
+            double delta = BaseCalc.calcDelta(Utils.ro);
+//
+            if (Utils.dmm < 800 && Utils.dmm > 200)
+                Utils.dmm = Utils.dmm + 20;
+            else if (Utils.dmm > 800)
+                Utils.dmm = Utils.dmm + 40;
+            else if (Utils.dmm < 200)
+                Utils.dmm = Utils.dmm + 10;
+//
+            Utils.psr = BaseCalc.calcAverPres(pnabs, pkabs);
+            Utils.tsr = BaseCalc.calcAverTempSimple(1, Utils.tgr, Utils.tn, Utils.tk);
+// первое приближение
+            double cp = BaseCalc.calcCp(Utils.tsr, Utils.psr);
+            double di = BaseCalc.calcDi(Utils.tsr, cp);
+            double ax = BaseCalc.calcAx(1, Utils.dmm, Utils.lkm, Utils.qf, delta, cp);
+            double eax = BaseCalc.calcEax(Utils.tn, Utils.tk, Utils.tgr, pnabs, pkabs, Utils.psr, ax, di);
+            double km = BaseCalc.calcKmDross(eax, Utils.qf, delta, cp, Utils.dmm, Utils.lkm);
+            ax = BaseCalc.calcAx(km, Utils.dmm, Utils.lkm, Utils.qf, delta, cp);
+            Utils.tsr = BaseCalc.calcAverTem(ax, Utils.tgr, Utils.tn, Utils.tk);
+// второе приближение
+            cp = BaseCalc.calcCp(Utils.tsr, Utils.psr);
+            di = BaseCalc.calcDi(Utils.tsr, cp);
+            ax = BaseCalc.calcAx(km, Utils.dmm, Utils.lkm, Utils.qf, delta, cp);
+            eax = BaseCalc.calcEax(Utils.tn, Utils.tk, Utils.tgr, pnabs, pkabs, Utils.psr, ax, di);
+            km = BaseCalc.calcKmDross(eax, Utils.qf, delta, cp, Utils.dmm, Utils.lkm);
+            ax = BaseCalc.calcAx(km, Utils.dmm, Utils.lkm, Utils.qf, delta, cp);
+//
+            Utils.tsr = BaseCalc.calcAverTem(ax, Utils.tgr, Utils.tn, Utils.tk) - 273.15;
+//
+            Utils.psr = Utils.psr - patm;
+
+            System.out.println("Среднее избыточное давление газа "+ Utils.psr + "  кгс/см2");
+            System.out.println("Средняя температура газа: "+ Utils.tsr + "  по Цельсию");
         }
     }
 }
