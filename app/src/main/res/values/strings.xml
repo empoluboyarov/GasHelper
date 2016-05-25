@@ -3,7 +3,7 @@
     <string name="title_activity_calc_z">CalcZActivity</string>
     <string name="title_activity_base_methodics">Базовые методики \n\n расчета </string>
     <string-array name="main">
-        <item>Rоэффициент сжимаемости</item>
+        <item>Kоэффициент сжимаемости</item>
         <item>Показатель адиабаты</item>
         <item>Фактическая плотность газа</item>
         <item>Запас газа в локкализованом участке МГ</item>
@@ -13,6 +13,7 @@
         <item>Продувка оборудования</item>
         <item>Пропускная способность участка МГ</item>
         <item>Гидравлическая эффективность МГ</item>
+        <item>Среднее давление и температура</item>
 
     </string-array>
     
