@@ -8,8 +8,8 @@ import android.widget.Toast;
  */
 public final class Utils {
 
-    public static final double TEMP_PRIVEDENIYA = 20;
-    public static final double PRES_PRIVEDNIYA = 760;
+    public static double TEMP_PRIVEDENIYA = 20;
+    public static double PRES_PRIVEDNIYA = 760;
 
     public static double pn;
     public static double pk;

@@ -243,4 +243,21 @@ public final class Verifier {
         }
         return result;
     }
+
+    public static double checkVolume(String txtVg) {
+        message = null;
+        if (txtVg == null || txtVg.isEmpty()) {
+            message = "Введите корректное значение объема.";
+            isCheck = false;
+        } else {
+            double v = Double.valueOf(txtVg);
+            if (v < 0) {
+                message = "Значение объема - положительное значение!!";
+                isCheck = false;
+            } else {
+                result = v;
+            }
+        }
+        return result;
+    }
 }

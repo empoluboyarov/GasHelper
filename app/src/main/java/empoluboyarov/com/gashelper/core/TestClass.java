@@ -9,7 +9,8 @@ public class TestClass {
         //calc1(); //расчет расхода газа при продувке оборудования
         //calc2(); // расчет пропускной способности участка мг
         //calc3(); // расчет гидравлической эффективности МГ
-        calc4(); //расчет среднего давления и средней температуры
+        //calc4(); //расчет среднего давления и средней температуры
+        calc5(); //пересчет объема газа для счетчика без корректора
     }
 
     private static void calc1() {
@@ -274,7 +275,6 @@ public class TestClass {
         Verifier.isCheck = true;
 
         String txtRo = "0.691";
-
         String txtPn = "50";
         String txtPk = "45";
         String txtPrt = "750";
@@ -341,8 +341,40 @@ public class TestClass {
 //
             Utils.psr = Utils.psr - patm;
 
-            System.out.println("Среднее избыточное давление газа "+ Utils.psr + "  кгс/см2");
-            System.out.println("Средняя температура газа: "+ Utils.tsr + "  по Цельсию");
+            System.out.println("Среднее избыточное давление газа " + Utils.psr + "  кгс/см2");
+            System.out.println("Средняя температура газа: " + Utils.tsr + "  по Цельсию");
+        }
+    }
+
+    private static void calc5() {
+        Verifier.isCheck = true;
+
+        String txtRo = "0.691";
+        String txtPn = "35.5";
+        String txtPrt = "745.3";
+        String txtTn = "12.7";
+        String txtVg = "1.231";
+
+        Utils.ro = Verifier.checkDensity(txtRo);
+        Utils.pn = Verifier.checkPressure(txtPn);
+        Utils.prt = Verifier.checkAtmPressure(txtPrt);
+        Utils.tn = Verifier.checkTemperature(txtTn);
+        Utils.vg = Verifier.checkVolume(txtVg);
+        Utils.privp = Utils.PRES_PRIVEDNIYA;
+        Utils.privt = Utils.TEMP_PRIVEDENIYA;
+
+        if (Verifier.isCheck) {
+
+            double patm = Utils.prt * 0.001359511;
+            double pabs = Utils.pn + patm;
+            Utils.privp = Utils.privp * 0.001359511;
+            Utils.tn = Utils.tn + 273.15;
+            Utils.privt = Utils.privt + 273.15;
+            Utils.z = BaseCalc.calcZ(Utils.tn, pabs, Utils.ro);
+            Utils.stock = BaseCalc.calcCountGas(Utils.vg, pabs, Utils.privp, Utils.tn, Utils.privt, Utils.z);
+
+            System.out.println("Коэффициент сжимаемости газа: " + Utils.z + " .");
+            System.out.println("Объем газа по условиям приведения: " + Utils.stock + " тыс.м3");
         }
     }
 }
