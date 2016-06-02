@@ -24,16 +24,16 @@ public class DynamicCountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dynamic_count);
 
-        etDens = (EditText) findViewById(R.id.etRoEf);
-        etAtmPres = (EditText) findViewById(R.id.etPrtEf);
-        etTempStart = (EditText) findViewById(R.id.etTnEf);
-        etTempFin = (EditText) findViewById(R.id.etTkEf);
-        etTempGrunta = (EditText) findViewById(R.id.etTgrEf);
-        etPresStart = (EditText) findViewById(R.id.etPnEf);
-        etPresFin = (EditText) findViewById(R.id.etPkEf);
-        etGasTransport = (EditText) findViewById(R.id.etQfEf);
+        etDens = (EditText) findViewById(R.id.etRoProd);
+        etAtmPres = (EditText) findViewById(R.id.etPrtProp);
+        etTempStart = (EditText) findViewById(R.id.etTnProp);
+        etTempFin = (EditText) findViewById(R.id.etTkProp);
+        etTempGrunta = (EditText) findViewById(R.id.etTgrProp);
+        etPresStart = (EditText) findViewById(R.id.etPnProp);
+        etPresFin = (EditText) findViewById(R.id.etPkProp);
+        etGasTransport = (EditText) findViewById(R.id.etHydroProp);
         etLength = (EditText) findViewById(R.id.etLAv);
-        etDiamet = (EditText) findViewById(R.id.etDEf);
+        etDiamet = (EditText) findViewById(R.id.etTimProd);
         tvResult = (TextView) findViewById(R.id.tvResultAv);
 
     }

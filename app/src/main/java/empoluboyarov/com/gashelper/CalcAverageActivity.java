@@ -20,16 +20,16 @@ public class CalcAverageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc_average);
 
-        etRo = (EditText)findViewById(R.id.etRoEf);
-        etPn = (EditText)findViewById(R.id.etPnEf);
-        etPk = (EditText)findViewById(R.id.etPkEf);
-        etPrt = (EditText)findViewById(R.id.etPrtEf);
-        etTn = (EditText)findViewById(R.id.etTnEf);
-        etTk = (EditText)findViewById(R.id.etTkEf);
-        etTgr = (EditText)findViewById(R.id.etTgrEf);
-        etQf = (EditText)findViewById(R.id.etQfEf);
+        etRo = (EditText)findViewById(R.id.etRoProd);
+        etPn = (EditText)findViewById(R.id.etPnProp);
+        etPk = (EditText)findViewById(R.id.etPkProp);
+        etPrt = (EditText)findViewById(R.id.etPrtProp);
+        etTn = (EditText)findViewById(R.id.etTnProp);
+        etTk = (EditText)findViewById(R.id.etTkProp);
+        etTgr = (EditText)findViewById(R.id.etTgrProp);
+        etQf = (EditText)findViewById(R.id.etHydroProp);
         etL = (EditText)findViewById(R.id.etLAv);
-        etD = (EditText)findViewById(R.id.etDEf);
+        etD = (EditText)findViewById(R.id.etTimProd);
 
         tvResult = (TextView) findViewById(R.id.tvResultAv);
     }
