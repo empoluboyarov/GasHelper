@@ -20,16 +20,16 @@ public class CalcAverageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc_average);
 
-        etRo = (EditText)findViewById(R.id.etRoAv);
-        etPn = (EditText)findViewById(R.id.etPnAv);
-        etPk = (EditText)findViewById(R.id.etPkAv);
-        etPrt = (EditText)findViewById(R.id.etPrtAv);
-        etTn = (EditText)findViewById(R.id.etTnAv);
-        etTk = (EditText)findViewById(R.id.etTkAv);
-        etTgr = (EditText)findViewById(R.id.etTgrAv);
-        etQf = (EditText)findViewById(R.id.etQfAv);
+        etRo = (EditText)findViewById(R.id.etRoEf);
+        etPn = (EditText)findViewById(R.id.etPnEf);
+        etPk = (EditText)findViewById(R.id.etPkEf);
+        etPrt = (EditText)findViewById(R.id.etPrtEf);
+        etTn = (EditText)findViewById(R.id.etTnEf);
+        etTk = (EditText)findViewById(R.id.etTkEf);
+        etTgr = (EditText)findViewById(R.id.etTgrEf);
+        etQf = (EditText)findViewById(R.id.etQfEf);
         etL = (EditText)findViewById(R.id.etLAv);
-        etD = (EditText)findViewById(R.id.etDAv);
+        etD = (EditText)findViewById(R.id.etDEf);
 
         tvResult = (TextView) findViewById(R.id.tvResultAv);
     }
@@ -64,7 +64,7 @@ public class CalcAverageActivity extends AppCompatActivity {
 
         Utils.makeToast(this);
 
-        
+
         if (Verifier.isCheck) {
             double patm = Utils.prt * 0.001359511;
             double pnabs = Utils.pn + patm;

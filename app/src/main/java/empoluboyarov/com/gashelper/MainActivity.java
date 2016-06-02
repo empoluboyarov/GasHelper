@@ -41,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
                 else if (i == 6)
                     startActivity(new Intent(MainActivity.this, DynamicCountActivity.class));
                 else if (i == 7)
-                    startActivity(new Intent(MainActivity.this, CalcFactDensActivity.class));
+                    startActivity(new Intent(MainActivity.this, CalcProduvkaActivity.class));
                 else if (i == 8)
-                    startActivity(new Intent(MainActivity.this, CalcFactDensActivity.class));
+                    startActivity(new Intent(MainActivity.this, CalcPropuskActivity.class));
                 else if (i == 9)
-                    startActivity(new Intent(MainActivity.this, CalcFactDensActivity.class));
+                    startActivity(new Intent(MainActivity.this, CalcEffectivActivity.class));
                 else if (i == 10)
                     startActivity(new Intent(MainActivity.this, CalcAverageActivity.class));
                 else if (i == 11)
