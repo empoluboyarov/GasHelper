@@ -43,7 +43,9 @@
             android:name=".simplecounts.CalcSpeedGasActivity"
             android:label="Cкорость истечения газа"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".DynamicCountActivity"></activity>
+        <activity android:name=".DynamicCountActivity" />
+        <activity android:name=".ConvertVolumeActivity" />
+        <activity android:name=".CalcAverageActivity"></activity>
     </application>
 
 </manifest>

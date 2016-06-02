@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".simplecounts.CalcGasCountActivity">
+    tools:context="empoluboyarov.com.gashelper.ConvertVolumeActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etDensGC"
+        android:id="@+id/etDensConVol"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView6"
         android:layout_alignBottom="@+id/textView6"
@@ -75,20 +75,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Длина газопровода, км"
+        android:text="Объем газа, тыс.м.куб"
         android:id="@+id/textView10"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/textView9"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Внутренний диаметр, мм"
-        android:id="@+id/textView11"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/textView10"
         android:layout_alignParentStart="true" />
 
     <EditText
@@ -116,18 +106,8 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etLengGC"
-        android:layout_above="@+id/textView11"
-        android:layout_toEndOf="@+id/textView9"
-        android:layout_alignStart="@+id/etTempConVol" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="10"
-        android:id="@+id/etDiamGC"
-        android:layout_alignBottom="@+id/textView11"
+        android:id="@+id/etVolumeConVol"
+        android:layout_alignBottom="@+id/textView10"
         android:layout_alignStart="@+id/etTempConVol" />
 
     <Button
@@ -135,16 +115,16 @@
         android:layout_height="wrap_content"
         android:text="Посчитать"
         android:id="@+id/button5"
-        android:layout_below="@+id/textView11"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="95dp"
-        android:onClick="calcGasCount" />
+        android:onClick="convertVolume"
+        android:layout_below="@+id/textView10" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/tvResultGasCount"
+        android:id="@+id/tvResultConVol"
         android:layout_below="@+id/button5"
         android:layout_centerHorizontal="true" />
 
@@ -154,9 +134,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Температура приведения - 20С, "
         android:id="@+id/textView13"
-        android:layout_below="@+id/textView11"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="33dp" />
+        android:layout_marginTop="33dp"
+        android:layout_below="@+id/textView10" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -166,4 +146,5 @@
         android:id="@+id/textView14"
         android:layout_below="@+id/textView13"
         android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

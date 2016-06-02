@@ -24,10 +24,10 @@ public class CalcGasCountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc_gas_count);
 
-        etTemp = (EditText) findViewById(R.id.etTempGC);
-        etPres = (EditText) findViewById(R.id.etPresGC);
+        etTemp = (EditText) findViewById(R.id.etTempConVol);
+        etPres = (EditText) findViewById(R.id.etPresConVol);
         etDens = (EditText) findViewById(R.id.etDensGC);
-        etAtmPres = (EditText) findViewById(R.id.etAtmPresGC);
+        etAtmPres = (EditText) findViewById(R.id.etAtmPresConVol);
         etLength = (EditText) findViewById(R.id.etLengGC);
         etDiameter = (EditText) findViewById(R.id.etDiamGC);
         tvResult = (TextView) findViewById(R.id.tvResultGasCount);

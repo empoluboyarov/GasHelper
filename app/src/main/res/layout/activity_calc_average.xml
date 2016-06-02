@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="empoluboyarov.com.gashelper.DynamicCountActivity">
+    tools:context="empoluboyarov.com.gashelper.CalcAverageActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -224,7 +224,7 @@
         android:id="@+id/btCalcAv"
         android:layout_below="@+id/textView23"
         android:layout_centerHorizontal="true"
-        android:onClick="calcDC" />
+        android:onClick="calcAverage" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -242,4 +242,6 @@
         android:id="@+id/textView24"
         android:layout_below="@+id/btCalcAv"
         android:layout_centerHorizontal="true" />
+
+
 </RelativeLayout>
