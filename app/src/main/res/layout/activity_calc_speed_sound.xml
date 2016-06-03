@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etDensSpeedSound"
+        android:id="@+id/etRoSS"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView6"
         android:layout_alignBottom="@+id/textView6"
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etPresSpeedSound"
+        android:id="@+id/etPnSS"
         android:layout_alignBottom="@+id/textView7"
         android:layout_toEndOf="@+id/textView6" />
 
@@ -86,28 +86,28 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etAtmPresSpeedSound"
+        android:id="@+id/etPrtSS"
         android:layout_above="@+id/textView9"
         android:layout_toEndOf="@+id/textView7"
-        android:layout_alignStart="@+id/etPresSpeedSound" />
+        android:layout_alignStart="@+id/etPnSS" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etTempSpeedSound"
+        android:id="@+id/etTnSS"
         android:layout_alignBottom="@+id/textView9"
         android:layout_toEndOf="@+id/textView8"
-        android:layout_alignStart="@+id/etAtmPresSpeedSound" />
+        android:layout_alignStart="@+id/etPrtSS" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etNitroSpeedSound"
-        android:layout_below="@+id/etTempSpeedSound"
+        android:id="@+id/etAzotSS"
+        android:layout_below="@+id/etTnSS"
         android:layout_toEndOf="@+id/textView10" />
 
     <Button
@@ -124,7 +124,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/tvResultSpeedSound"
+        android:id="@+id/tvResultSS"
         android:layout_below="@+id/btSpeedSound"
         android:layout_centerHorizontal="true" />
 

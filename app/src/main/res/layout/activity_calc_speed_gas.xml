@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etDensSpeedGas"
+        android:id="@+id/etRoSG"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView6"
         android:layout_alignBottom="@+id/textView6"
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etPresSpeedGas"
+        android:id="@+id/etPnSG"
         android:layout_alignBottom="@+id/textView7"
         android:layout_toEndOf="@+id/textView6" />
 
@@ -86,28 +86,28 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etAtmPresSpeedGas"
+        android:id="@+id/etPrtSG"
         android:layout_above="@+id/textView9"
         android:layout_toEndOf="@+id/textView7"
-        android:layout_alignStart="@+id/etPresSpeedGas" />
+        android:layout_alignStart="@+id/etPnSG" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etTempSpeedGas"
+        android:id="@+id/etTnSG"
         android:layout_alignBottom="@+id/textView9"
         android:layout_toEndOf="@+id/textView8"
-        android:layout_alignStart="@+id/etAtmPresSpeedGas" />
+        android:layout_alignStart="@+id/etPrtSG" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etNitroSpeedGas"
-        android:layout_below="@+id/etTempSpeedGas"
+        android:id="@+id/etAzotSG"
+        android:layout_below="@+id/etTnSG"
         android:layout_toEndOf="@+id/textView10" />
 
     <Button
@@ -124,7 +124,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/tvResultSpeedGas"
+        android:id="@+id/tvResultSG"
         android:layout_below="@+id/btSpeedGas"
         android:layout_centerHorizontal="true" />
 

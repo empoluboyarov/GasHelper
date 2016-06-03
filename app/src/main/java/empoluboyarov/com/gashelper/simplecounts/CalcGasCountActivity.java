@@ -34,19 +34,13 @@ public class CalcGasCountActivity extends AppCompatActivity {
 
         Verifier.isCheck = true;
 
-        String txtTn = etTn.getText().toString();
-        String txtPn = etPn.getText().toString();
-        String txtRo = etRo.getText().toString();
-        String txtPrt = etPrt.getText().toString();
-        String txtD = etD.getText().toString();
-        String txtL = etL.getText().toString();
+        Utils.ro = Verifier.checkDensity(etRo.getText().toString());
+        Utils.pn = Verifier.checkPressure(etPn.getText().toString());
+        Utils.tn = Verifier.checkTemperature(etTn.getText().toString());
+        Utils.prt = Verifier.checkAtmPressure(etPrt.getText().toString());
+        Utils.dmm = Verifier.checkDiameter(etD.getText().toString());
+        Utils.lkm = Verifier.checkLength(etL.getText().toString());
 
-        Utils.ro = Verifier.checkDensity(txtRo);
-        Utils.pn = Verifier.checkPressure(txtPn);
-        Utils.tn = Verifier.checkTemperature(txtTn);
-        Utils.prt = Verifier.checkAtmPressure(txtPrt);
-        Utils.dmm = Verifier.checkDiameter(txtD);
-        Utils.lkm = Verifier.checkLength(txtL);
         Utils.makeToast(this);
 
         if (Verifier.isCheck) {

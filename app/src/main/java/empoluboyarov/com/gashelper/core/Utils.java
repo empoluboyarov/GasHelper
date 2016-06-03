@@ -40,6 +40,10 @@ public final class Utils {
     public static double hydro;
     public static double upspeed;
     public static double downspeed;
+    public static double adiabata;
+    public static double speedsound;
+    public static double rofact;
+    public static double speedgas;
 
     public static void makeToast(Context context){
 

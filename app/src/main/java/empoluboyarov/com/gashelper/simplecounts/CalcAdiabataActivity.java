@@ -33,17 +33,11 @@ public class CalcAdiabataActivity extends AppCompatActivity {
 
         Verifier.isCheck = true;
 
-        String txtTn = etTn.getText().toString();
-        String txtPn = etPn.getText().toString();
-        String txtRo = etRo.getText().toString();
-        String txtPrt = etPrt.getText().toString();
-        String txtAzot = etAzot.getText().toString();
-
-        Utils.ro = Verifier.checkDensity(txtRo);
-        Utils.pn = Verifier.checkPressure(txtPn);
-        Utils.tn = Verifier.checkTemperature(txtTn);
-        Utils.prt = Verifier.checkAtmPressure(txtPrt);
-        Utils.azot = Verifier.checkNitrogen(txtAzot);
+        Utils.ro = Verifier.checkDensity(etRo.getText().toString());
+        Utils.pn = Verifier.checkPressure(etPn.getText().toString());
+        Utils.tn = Verifier.checkTemperature(etTn.getText().toString());
+        Utils.prt = Verifier.checkAtmPressure(etPrt.getText().toString());
+        Utils.azot = Verifier.checkNitrogen(etAzot.getText().toString());
 
         Utils.makeToast(this);
 
