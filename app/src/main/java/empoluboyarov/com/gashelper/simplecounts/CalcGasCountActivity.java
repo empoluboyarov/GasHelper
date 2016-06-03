@@ -33,6 +33,7 @@ public class CalcGasCountActivity extends AppCompatActivity {
     public void calcGasCount(View view) {
 
         Verifier.isCheck = true;
+        Verifier.message = null;
 
         Utils.ro = Verifier.checkDensity(etRo.getText().toString());
         Utils.pn = Verifier.checkPressure(etPn.getText().toString());

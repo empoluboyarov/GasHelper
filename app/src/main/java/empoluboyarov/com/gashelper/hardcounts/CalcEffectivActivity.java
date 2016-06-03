@@ -45,6 +45,7 @@ public class CalcEffectivActivity extends AppCompatActivity {
 
         boolean critMode = false;
         Verifier.isCheck = true;
+        Verifier.message = null;
 
         Utils.ro = Verifier.checkDensity(etRo.getText().toString());
         Utils.azot = Verifier.checkNitrogen(etAzot.getText().toString());

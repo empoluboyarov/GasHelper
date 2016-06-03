@@ -37,6 +37,7 @@ public class CalcAverageActivity extends AppCompatActivity {
 
     public void calcAverage(View view) {
         Verifier.isCheck = true;
+        Verifier.message = null;
 
         Utils.ro = Verifier.checkDensity(etRo.getText().toString());
         Utils.pn = Verifier.checkPressure(etPn.getText().toString());

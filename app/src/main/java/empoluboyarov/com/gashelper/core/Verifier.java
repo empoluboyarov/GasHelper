@@ -7,7 +7,6 @@ public final class Verifier {
     private static double result = 0.0;
 
     public static double checkDensity(String txtDens) {
-        message = null;
         if (txtDens == null || txtDens.isEmpty()) {
             message = "Введите корректное значение плотности.";
             isCheck = false;
@@ -24,7 +23,6 @@ public final class Verifier {
     }
 
     public static double checkPressure(String txtPres) {
-        message = null;
         if (txtPres == null || txtPres.isEmpty()) {
             message = "Введите корректное значение давления.";
             isCheck = false;
@@ -41,7 +39,6 @@ public final class Verifier {
     }
 
     public static double checkTemperature(String txtTemp) {
-        message = null;
         if (txtTemp == null || txtTemp.isEmpty()) {
             message = "Введите корректное значение тумпературы.";
             isCheck = false;
@@ -58,7 +55,6 @@ public final class Verifier {
     }
 
     public static double checkAtmPressure(String txtAtmPres) {
-        message = null;
         if (txtAtmPres == null || txtAtmPres.isEmpty()) {
             message = "Введите корректное значение атомосферного давления.";
             isCheck = false;
@@ -75,7 +71,6 @@ public final class Verifier {
     }
 
     public static double checkNitrogen(String txtNitro) {
-        message = null;
         if (txtNitro == null || txtNitro.isEmpty()) {
             message = "Введите корректное значение молярной составляющей азота.";
             isCheck = false;
@@ -92,7 +87,6 @@ public final class Verifier {
     }
 
     public static double checkLength(String txtLength) {
-        message = null;
         if (txtLength == null || txtLength.isEmpty()) {
             message = "Введите корректное значение длины газопровода.";
             isCheck = false;
@@ -110,7 +104,6 @@ public final class Verifier {
     }
 
     public static double checkDiameter(String txtDiameter) {
-        message = null;
         if (txtDiameter == null || txtDiameter.isEmpty()) {
             message = "Введите корректное значение диаметра газопровода.";
             isCheck = false;
@@ -142,7 +135,6 @@ public final class Verifier {
     }
 
     public static double checkGasTransport(String txtGasTransport) {
-        message = null;
         if (txtGasTransport == null || txtGasTransport.isEmpty()) {
             message = "Введите корректное значение объема транспорта газа.";
             isCheck = false;
@@ -159,7 +151,6 @@ public final class Verifier {
     }
 
     public static double checkFlowTime(String txtTim) {
-        message = null;
         if (txtTim == null || txtTim.isEmpty()) {
             message = "Введите корректное значение время истечения газа";
             isCheck = false;
@@ -176,7 +167,6 @@ public final class Verifier {
     }
 
     public static double checkHydro(String txtHydro) {
-        message = null;
         if (txtHydro == null || txtHydro.isEmpty()) {
             message = "Введите корректное значение коэффициента гидравлической эффективности";
             isCheck = false;
@@ -193,8 +183,6 @@ public final class Verifier {
     }
 
     public static double checkSmallDiameter(String txtD) {
-
-        message = null;
         if (txtD == null || txtD.isEmpty()) {
             message = "Введите корректное значение внутреннего диаметра.";
             isCheck = false;
@@ -211,7 +199,6 @@ public final class Verifier {
     }
 
     public static double checkSmallLength(String txtL) {
-        message = null;
         if (txtL == null || txtL.isEmpty()) {
             message = "Введите корректное значение длины.";
             isCheck = false;
@@ -228,7 +215,6 @@ public final class Verifier {
     }
 
     public static double checkVisota(String txtH) {
-        message = null;
         if (txtH == null || txtH.isEmpty()) {
             message = "Введите корректное значение высоты над уровнем моря.";
             isCheck = false;
@@ -245,7 +231,6 @@ public final class Verifier {
     }
 
     public static double checkVolume(String txtVg) {
-        message = null;
         if (txtVg == null || txtVg.isEmpty()) {
             message = "Введите корректное значение объема.";
             isCheck = false;

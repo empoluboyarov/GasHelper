@@ -31,6 +31,7 @@ public class ConvertVolumeActivity extends AppCompatActivity {
 
     public void convertVolume(View view) {
         Verifier.isCheck = true;
+        Verifier.message = null;
 
         Utils.ro = Verifier.checkDensity(etRo.getText().toString());
         Utils.pn = Verifier.checkPressure(etPn.getText().toString());

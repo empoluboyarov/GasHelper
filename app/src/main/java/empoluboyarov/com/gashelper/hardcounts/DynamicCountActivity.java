@@ -41,6 +41,7 @@ public class DynamicCountActivity extends AppCompatActivity {
     public void calcDC(View view) {
 
         Verifier.isCheck = true;
+        Verifier.message = null;
 
         Utils.pn = Verifier.checkPressure(etPn.getText().toString());
         Utils.pk = Verifier.checkPressure(etPk.getText().toString());

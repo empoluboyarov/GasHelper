@@ -42,6 +42,7 @@ public class CalcPropuskActivity extends AppCompatActivity {
     public void calcPropusk(View view) {
         boolean critMode = false;
         Verifier.isCheck = true;
+        Verifier.message = null;
 
         Utils.ro = Verifier.checkDensity(etRo.getText().toString());
         Utils.azot = Verifier.checkNitrogen(etAzot.getText().toString());

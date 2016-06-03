@@ -62,3 +62,6 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(listener);
     }
 }
+
+//TODO разобраться с глюком при записи только плотность - попробовать удалить обнуление сообщение в каждом методе проверке
+// а обнуление вызывать при обнулении isCheck
