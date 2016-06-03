@@ -13,57 +13,56 @@ import empoluboyarov.com.gashelper.core.Verifier;
 
 public class CalcGasCountActivity extends AppCompatActivity {
 
-    private EditText etTemp, etPres, etDens, etAtmPres, etLength, etDiameter;
+    private EditText etTn, etPn, etRo, etPrt, etL, etD;
     private TextView tvResult;
-    //TODO реализовать возможность выбора условий приведения
-    private static final double TEMP_PRIVEDENIYA = 20;
-    private static final double PRES_PRIVEDNIYA = 760;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc_gas_count);
 
-        etTemp = (EditText) findViewById(R.id.etTempConVol);
-        etPres = (EditText) findViewById(R.id.etPresConVol);
-        etDens = (EditText) findViewById(R.id.etDensGC);
-        etAtmPres = (EditText) findViewById(R.id.etAtmPresConVol);
-        etLength = (EditText) findViewById(R.id.etLengGC);
-        etDiameter = (EditText) findViewById(R.id.etDiamGC);
-        tvResult = (TextView) findViewById(R.id.tvResultGasCount);
+        etTn = (EditText) findViewById(R.id.etTnGC);
+        etPn = (EditText) findViewById(R.id.etPnGC);
+        etRo = (EditText) findViewById(R.id.etRoGC);
+        etPrt = (EditText) findViewById(R.id.etPrtGC);
+        etL = (EditText) findViewById(R.id.etLGC);
+        etD = (EditText) findViewById(R.id.etDGC);
+        tvResult = (TextView) findViewById(R.id.tvResultGC);
     }
 
     public void calcGasCount(View view) {
 
         Verifier.isCheck = true;
 
-        String txtTemp = etTemp.getText().toString();
-        String txtPres = etPres.getText().toString();
-        String txtDens = etDens.getText().toString();
-        String txtAtmPres = etAtmPres.getText().toString();
-        String txtDiameter = etDiameter.getText().toString();
-        String txtLength = etLength.getText().toString();
+        String txtTn = etTn.getText().toString();
+        String txtPn = etPn.getText().toString();
+        String txtRo = etRo.getText().toString();
+        String txtPrt = etPrt.getText().toString();
+        String txtD = etD.getText().toString();
+        String txtL = etL.getText().toString();
 
-        double dens = Verifier.checkDensity(txtDens);
-        double pres = Verifier.checkPressure(txtPres);
-        double temp = Verifier.checkTemperature(txtTemp);
-        double atmPres = Verifier.checkAtmPressure(txtAtmPres);
-        double diameter = Verifier.checkDiameter(txtDiameter);
-        double length = Verifier.checkLength(txtLength);
+        Utils.ro = Verifier.checkDensity(txtRo);
+        Utils.pn = Verifier.checkPressure(txtPn);
+        Utils.tn = Verifier.checkTemperature(txtTn);
+        Utils.prt = Verifier.checkAtmPressure(txtPrt);
+        Utils.dmm = Verifier.checkDiameter(txtD);
+        Utils.lkm = Verifier.checkLength(txtL);
         Utils.makeToast(this);
 
         if (Verifier.isCheck) {
 
-            double v = (Math.PI * diameter * diameter) / 4 * length;// геометрический объем газопровода
-            double patm = atmPres * 0.001359511;// атмосферное давление из мм рт. ст. в килограммы
-            double pabs = pres + patm;// абсолютное давление
-            temp = temp + 273.15;// температура по Кельвину
-            double z = BaseCalc.calcZ(temp, pabs, dens);// расчет коэффициента сжимаемости
-            double privTemp = TEMP_PRIVEDENIYA + 273.15; //пересчет температуры приведения в Кельвины
-            double privPres = PRES_PRIVEDNIYA * 0.001359511; // пересчет давления приведения из мм.рт.ст. в килограммы
+            Utils.vg = (Math.PI * Utils.dm * Utils.dm) / 4 * Utils.lm;// геометрический объем газопровода
 
-            double result = BaseCalc.calcCountGas(v, pabs, privPres, temp, privTemp, z);
-            tvResult.setText("" + result);
+            double patm = Utils.prt * 0.001359511;
+            double pnabs = Utils.pn + patm;
+            Utils.tn = Utils.tn + 273.15;
+
+            Utils.z = BaseCalc.calcZ(Utils.tn, pnabs, Utils.ro);// расчет коэффициента сжимаемости
+            Utils.privt = Utils.TEMP_PRIVEDENIYA + 273.15; //пересчет температуры приведения в Кельвины
+            Utils.privp = Utils.PRES_PRIVEDNIYA * 0.001359511; // пересчет давления приведения из мм.рт.ст. в килограммы
+
+            Utils.stock = BaseCalc.calcCountGas(Utils.vg, pnabs, Utils.privp, Utils.tn, Utils.privt, Utils.z);
+            tvResult.setText("" + Utils.stock);
 
         } else tvResult.setText("" + 0.000);
     }

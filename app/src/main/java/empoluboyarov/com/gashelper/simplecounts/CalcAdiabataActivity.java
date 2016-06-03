@@ -13,7 +13,7 @@ import empoluboyarov.com.gashelper.core.Verifier;
 
 public class CalcAdiabataActivity extends AppCompatActivity {
 
-    private EditText etTemp, etPres, etDens, etAtmPres, etNitro;
+    private EditText etTn, etPn, etRo, etPrt, etAzot;
     private TextView tvResult;
 
     @Override
@@ -21,36 +21,38 @@ public class CalcAdiabataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc_adiabata);
 
-        etTemp = (EditText) findViewById(R.id.etTempFD);
-        etPres = (EditText) findViewById(R.id.etPresFD);
-        etDens = (EditText) findViewById(R.id.etDensAdiabat);
-        etAtmPres = (EditText) findViewById(R.id.etAtmPresFD);
-        etNitro = (EditText) findViewById(R.id.etNitroAdiabat);
-        tvResult = (TextView) findViewById(R.id.tvResultAdiabatic);
+        etTn = (EditText) findViewById(R.id.etTnAd);
+        etPn = (EditText) findViewById(R.id.etPnAd);
+        etRo = (EditText) findViewById(R.id.etRoAd);
+        etPrt = (EditText) findViewById(R.id.etPrtAd);
+        etAzot = (EditText) findViewById(R.id.etAzotAd);
+        tvResult = (TextView) findViewById(R.id.tvResultAd);
     }
 
     public void calcAdiabat(View view) {
 
         Verifier.isCheck = true;
 
-        String txtTemp = etTemp.getText().toString();
-        String txtPres = etPres.getText().toString();
-        String txtDens = etDens.getText().toString();
-        String txtAtmPres = etAtmPres.getText().toString();
-        String txtNitro = etNitro.getText().toString();
+        String txtTn = etTn.getText().toString();
+        String txtPn = etPn.getText().toString();
+        String txtRo = etRo.getText().toString();
+        String txtPrt = etPrt.getText().toString();
+        String txtAzot = etAzot.getText().toString();
 
-        double dens = Verifier.checkDensity(txtDens);
-        double pres = Verifier.checkPressure(txtPres);
-        double temp = Verifier.checkTemperature(txtTemp);
-        double atmPres = Verifier.checkAtmPressure(txtAtmPres);
-        double nitrogen = Verifier.checkNitrogen(txtNitro);
+        Utils.ro = Verifier.checkDensity(txtRo);
+        Utils.pn = Verifier.checkPressure(txtPn);
+        Utils.tn = Verifier.checkTemperature(txtTn);
+        Utils.prt = Verifier.checkAtmPressure(txtPrt);
+        Utils.azot = Verifier.checkNitrogen(txtAzot);
+
         Utils.makeToast(this);
 
         if (Verifier.isCheck) {
-            double patm = atmPres * 0.001359511;// атмосферное давление из мм рт. ст. в килограммы
-            double pabs = pres + patm;// абсолютное давление
-            temp = temp + 273.15;// температура по Кельвину
-            double result = BaseCalc.calcAdiabata(temp, pabs, dens, nitrogen);
+            double patm = Utils.prt * 0.001359511;
+            double pnabs = Utils.pn + patm;
+            Utils.tn = Utils.tn + 273.15;
+
+            double result = BaseCalc.calcAdiabata(Utils.tn, pnabs, Utils.ro, Utils.azot);
             tvResult.setText("" + result);
         } else tvResult.setText("" + 0.000);
     }

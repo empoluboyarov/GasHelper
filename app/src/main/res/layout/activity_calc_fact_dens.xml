@@ -24,11 +24,11 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal|"
         android:ems="10"
-        android:id="@+id/etDensFD"
+        android:id="@+id/etRoFD"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignBottom="@+id/textView"
-        android:layout_alignStart="@+id/etPresFD" />
+        android:layout_alignStart="@+id/etPnFD" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -62,25 +62,25 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal|"
         android:ems="10"
-        android:id="@+id/etPresFD"
+        android:id="@+id/etPnFD"
         android:layout_above="@+id/textView3"
-        android:layout_alignStart="@+id/etAtmPresFD" />
+        android:layout_alignStart="@+id/etPrtFD" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal|"
         android:ems="10"
-        android:id="@+id/etAtmPresFD"
+        android:id="@+id/etPrtFD"
         android:layout_alignBottom="@+id/textView3"
-        android:layout_alignStart="@+id/etTempFD" />
+        android:layout_alignStart="@+id/etTnFD" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal|"
         android:ems="10"
-        android:id="@+id/etTempFD"
+        android:id="@+id/etTnFD"
         android:layout_alignBottom="@+id/textView4"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/btn_calcFD" />

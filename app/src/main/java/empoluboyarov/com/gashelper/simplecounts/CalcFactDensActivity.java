@@ -13,7 +13,7 @@ import empoluboyarov.com.gashelper.core.Verifier;
 
 public class CalcFactDensActivity extends AppCompatActivity {
 
-    private EditText etTemp, etPres, etDens, etAtmPres;
+    private EditText etTn, etPn, etRo, etPrt;
     private TextView tvResult;
 
     @Override
@@ -21,10 +21,10 @@ public class CalcFactDensActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc_fact_dens);
 
-        etTemp = (EditText) findViewById(R.id.etTempFD);
-        etPres = (EditText) findViewById(R.id.etPresFD);
-        etDens = (EditText) findViewById(R.id.etDensFD);
-        etAtmPres = (EditText) findViewById(R.id.etAtmPresFD);
+        etTn = (EditText) findViewById(R.id.etTnFD);
+        etPn = (EditText) findViewById(R.id.etPnFD);
+        etRo = (EditText) findViewById(R.id.etRoFD);
+        etPrt = (EditText) findViewById(R.id.etPrtFD);
         tvResult = (TextView) findViewById(R.id.tvResultFD);
     }
 
@@ -32,24 +32,26 @@ public class CalcFactDensActivity extends AppCompatActivity {
 
         Verifier.isCheck = true;
 
-        String txtTemp = etTemp.getText().toString();
-        String txtPres = etPres.getText().toString();
-        String txtDens = etDens.getText().toString();
-        String txtAtmPres = etAtmPres.getText().toString();
+        String txtTn = etTn.getText().toString();
+        String txtPn = etPn.getText().toString();
+        String txtRo = etRo.getText().toString();
+        String txtPrt = etPrt.getText().toString();
 
 
-        double dens = Verifier.checkDensity(txtDens);
-        double pres = Verifier.checkPressure(txtPres);
-        double temp = Verifier.checkTemperature(txtTemp);
-        double atmPres = Verifier.checkAtmPressure(txtAtmPres);
+        Utils.ro = Verifier.checkDensity(txtRo);
+        Utils.pn = Verifier.checkPressure(txtPn);
+        Utils.tn = Verifier.checkTemperature(txtTn);
+        Utils.prt = Verifier.checkAtmPressure(txtPrt);
+
         Utils.makeToast(this);
 
         if (Verifier.isCheck) {
-            double patm = atmPres * 0.001359511;// атмосферное давление из мм рт. ст. в килограммы
-            double pabs = pres + patm;// абсолютное давление
-            temp = temp + 273.15;// температура по Кельвину
-            double z = BaseCalc.calcZ(temp, pabs, dens);
-            double result = BaseCalc.calcRoFact(dens, pabs, temp, z);
+
+            double patm = Utils.prt * 0.001359511;
+            double pnabs = Utils.pn + patm;
+            Utils.tn = Utils.tn + 273.15;
+
+            double result = BaseCalc.calcRoFact(Utils.ro, pnabs, Utils.tn, Utils.z);
             tvResult.setText("" + result);
         } else tvResult.setText("" + 0.000);
     }

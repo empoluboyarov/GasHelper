@@ -12,7 +12,7 @@ import empoluboyarov.com.gashelper.core.Verifier;
 
 public class ConvertVolumeActivity extends AppCompatActivity {
 
-    private EditText etTemp, etPres, etDens, etAtmPres, etVolume;
+    private EditText etTn, etPn, etRo, etPrt, etVg;
     private TextView tvResult;
 
     @Override
@@ -20,22 +20,22 @@ public class ConvertVolumeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_convert_volume);
 
-        etTemp = (EditText) findViewById(R.id.etTempConVol);
-        etPres = (EditText) findViewById(R.id.etPresConVol);
-        etDens = (EditText) findViewById(R.id.etDensConVol);
-        etAtmPres = (EditText) findViewById(R.id.etAtmPresConVol);
-        etVolume = (EditText) findViewById(R.id.etVolumeConVol);
-        tvResult = (TextView) findViewById(R.id.tvResultConVol);
+        etTn = (EditText) findViewById(R.id.etTnCV);
+        etPn = (EditText) findViewById(R.id.etPnCV);
+        etRo = (EditText) findViewById(R.id.etRoCV);
+        etPrt = (EditText) findViewById(R.id.etPrtCV);
+        etVg = (EditText) findViewById(R.id.etVgCV);
+        tvResult = (TextView) findViewById(R.id.tvResultCV);
     }
 
     public void convertVolume(View view) {
         Verifier.isCheck = true;
 
-        String txtRo = etDens.getText().toString();
-        String txtPn = etPres.getText().toString();;
-        String txtPrt = etAtmPres.getText().toString();;
-        String txtTn = etTemp.getText().toString();;
-        String txtVg = etVolume.getText().toString();;
+        String txtRo = etRo.getText().toString();
+        String txtPn = etPn.getText().toString();;
+        String txtPrt = etPrt.getText().toString();;
+        String txtTn = etTn.getText().toString();;
+        String txtVg = etVg.getText().toString();;
 
         Utils.ro = Verifier.checkDensity(txtRo);
         Utils.pn = Verifier.checkPressure(txtPn);

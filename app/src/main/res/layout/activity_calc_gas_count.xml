@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etDensGC"
+        android:id="@+id/etRoGC"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView6"
         android:layout_alignBottom="@+id/textView6"
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etPresConVol"
+        android:id="@+id/etPnGC"
         android:layout_alignBottom="@+id/textView7"
         android:layout_toEndOf="@+id/textView6" />
 
@@ -96,7 +96,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etAtmPresConVol"
+        android:id="@+id/etPrtGC"
         android:layout_above="@+id/textView9"
         android:layout_toEndOf="@+id/textView7"
         android:layout_alignStart="@+id/etPresConVol" />
@@ -106,7 +106,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etTempConVol"
+        android:id="@+id/etTnGC"
         android:layout_alignBottom="@+id/textView9"
         android:layout_toEndOf="@+id/textView8"
         android:layout_alignStart="@+id/etAtmPresConVol" />
@@ -116,19 +116,19 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etLengGC"
+        android:id="@+id/etLGC"
         android:layout_above="@+id/textView11"
         android:layout_toEndOf="@+id/textView9"
-        android:layout_alignStart="@+id/etTempConVol" />
+        android:layout_alignStart="@+id/etTnGC" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etDiamGC"
+        android:id="@+id/etDGC"
         android:layout_alignBottom="@+id/textView11"
-        android:layout_alignStart="@+id/etTempConVol" />
+        android:layout_alignStart="@+id/etTnGC" />
 
     <Button
         android:layout_width="wrap_content"
@@ -144,7 +144,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/tvResultGasCount"
+        android:id="@+id/tvResultGC"
         android:layout_below="@+id/button5"
         android:layout_centerHorizontal="true" />
 

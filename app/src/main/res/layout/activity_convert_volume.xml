@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etDensConVol"
+        android:id="@+id/etRoCV"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView6"
         android:layout_alignBottom="@+id/textView6"
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etPresConVol"
+        android:id="@+id/etPnCV"
         android:layout_alignBottom="@+id/textView7"
         android:layout_toEndOf="@+id/textView6" />
 
@@ -86,29 +86,29 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etAtmPresConVol"
+        android:id="@+id/etPrtCV"
         android:layout_above="@+id/textView9"
         android:layout_toEndOf="@+id/textView7"
-        android:layout_alignStart="@+id/etPresConVol" />
+        android:layout_alignStart="@+id/etPnCV" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etTempConVol"
+        android:id="@+id/etTnCV"
         android:layout_alignBottom="@+id/textView9"
         android:layout_toEndOf="@+id/textView8"
-        android:layout_alignStart="@+id/etAtmPresConVol" />
+        android:layout_alignStart="@+id/etPrtCV" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etVolumeConVol"
+        android:id="@+id/etVgCV"
         android:layout_alignBottom="@+id/textView10"
-        android:layout_alignStart="@+id/etTempConVol" />
+        android:layout_alignStart="@+id/etTnCV" />
 
     <Button
         android:layout_width="wrap_content"
@@ -124,7 +124,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/tvResultConVol"
+        android:id="@+id/tvResultCV"
         android:layout_below="@+id/button5"
         android:layout_centerHorizontal="true" />
 
