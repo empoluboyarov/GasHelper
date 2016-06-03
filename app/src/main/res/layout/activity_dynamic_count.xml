@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="empoluboyarov.com.gashelper.DynamicCountActivity">
+    tools:context=".hardcounts.DynamicCountActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etRoProd"
+        android:id="@+id/etRoDC"
         android:layout_alignBottom="@+id/textView12"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView12" />
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etPnProp"
+        android:id="@+id/etPnDC"
         android:layout_alignBottom="@+id/textView15"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView12" />
@@ -134,88 +134,88 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etPkProp"
+        android:id="@+id/etPkDC"
         android:layout_above="@+id/textView17"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView16"
-        android:layout_alignStart="@+id/etPnProp" />
+        android:layout_alignStart="@+id/etPnDC" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etPrtProp"
+        android:id="@+id/etPrtDC"
         android:layout_above="@+id/textView18"
-        android:layout_alignEnd="@+id/etPnProp"
+        android:layout_alignEnd="@+id/etPnDC"
         android:layout_toEndOf="@+id/textView16"
-        android:layout_alignStart="@+id/etPkProp" />
+        android:layout_alignStart="@+id/etPkDC" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etTnProp"
+        android:id="@+id/etTnDC"
         android:layout_above="@+id/textView19"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView17"
-        android:layout_alignStart="@+id/etPrtProp" />
+        android:layout_alignStart="@+id/etPrtDC" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etTkProp"
+        android:id="@+id/etTkDC"
         android:layout_above="@+id/textView20"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView18"
-        android:layout_alignStart="@+id/etTnProp" />
+        android:layout_alignStart="@+id/etTnDC" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etTgrProp"
+        android:id="@+id/etTgrDC"
         android:layout_alignBottom="@+id/textView20"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView19"
-        android:layout_alignStart="@+id/etTkProp" />
+        android:layout_alignStart="@+id/etTkDC" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etHydroProp"
+        android:id="@+id/etQfDC"
         android:layout_above="@+id/textView22"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView20"
-        android:layout_alignStart="@+id/etTgrProp" />
+        android:layout_alignStart="@+id/etTgrDC" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etLAv"
+        android:id="@+id/etLDC"
         android:layout_above="@+id/textView23"
-        android:layout_alignEnd="@+id/etPnProp"
+        android:layout_alignEnd="@+id/etPnDC"
         android:layout_toEndOf="@+id/textView21"
-        android:layout_alignStart="@+id/etHydroProp" />
+        android:layout_alignStart="@+id/etQfDC" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/etTimProd"
+        android:id="@+id/etDDC"
         android:layout_alignBottom="@+id/textView23"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView22"
-        android:layout_alignStart="@+id/etLAv" />
+        android:layout_alignStart="@+id/etLDC" />
 
     <Button
         android:layout_width="wrap_content"
@@ -230,7 +230,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/tvResultAv"
+        android:id="@+id/tvResultDC"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 

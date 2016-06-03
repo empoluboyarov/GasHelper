@@ -1,4 +1,4 @@
-package empoluboyarov.com.gashelper;
+package empoluboyarov.com.gashelper.hardcounts;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import empoluboyarov.com.gashelper.R;
 import empoluboyarov.com.gashelper.core.BaseCalc;
 import empoluboyarov.com.gashelper.core.Utils;
 import empoluboyarov.com.gashelper.core.Verifier;
@@ -42,36 +43,21 @@ public class CalcPropuskActivity extends AppCompatActivity {
         boolean critMode = false;
         Verifier.isCheck = true;
 
-        String txtRo = etRo.getText().toString();
-        String txtAzot = etAzot.getText().toString();
-        String txtPn = etPn.getText().toString();
-        String txtPk = etPk.getText().toString();
-        String txtPrt = etPrt.getText().toString();
-        String txtTn = etTn.getText().toString();
-        String txtTk = etTk.getText().toString();
-        String txtTgr = etTgr.getText().toString();
-        String txtHydro = etHydro.getText().toString();
-        String txtL = etL.getText().toString();
-        String txtD = etD.getText().toString();
-        String txtHn = etHn.getText().toString();
-        String txtHk = etHk.getText().toString();
-
-
-        Utils.ro = Verifier.checkDensity(txtRo);
-        Utils.azot = Verifier.checkNitrogen(txtAzot);
-        Utils.pn = Verifier.checkPressure(txtPn);
-        Utils.pk = Verifier.checkPressure(txtPk);
-        Utils.prt = Verifier.checkAtmPressure(txtPrt);
+        Utils.ro = Verifier.checkDensity(etRo.getText().toString());
+        Utils.azot = Verifier.checkNitrogen(etAzot.getText().toString());
+        Utils.pn = Verifier.checkPressure(etPn.getText().toString());
+        Utils.pk = Verifier.checkPressure(etPk.getText().toString());
+        Utils.prt = Verifier.checkAtmPressure(etPrt.getText().toString());
         Verifier.checkDeltaPres(Utils.pn, Utils.pk);
-        Utils.tn = Verifier.checkTemperature(txtTn);
-        Utils.tk = Verifier.checkTemperature(txtTk);
+        Utils.tn = Verifier.checkTemperature(etTn.getText().toString());
+        Utils.tk = Verifier.checkTemperature(etTk.getText().toString());
         Verifier.checkDeltaTemp(Utils.tn, Utils.tk);
-        Utils.tgr = Verifier.checkTemperature(txtTgr);
-        Utils.hydro = Verifier.checkHydro(txtHydro);
-        Utils.lkm = Verifier.checkLength(txtL);
-        Utils.dmm = Verifier.checkDiameter(txtD);
-        Utils.h1 = Verifier.checkVisota(txtHn);
-        Utils.h2 = Verifier.checkVisota(txtHk);
+        Utils.tgr = Verifier.checkTemperature(etTgr.getText().toString());
+        Utils.hydro = Verifier.checkHydro(etHydro.getText().toString());
+        Utils.lkm = Verifier.checkLength(etL.getText().toString());
+        Utils.dmm = Verifier.checkDiameter(etD.getText().toString());
+        Utils.h1 = Verifier.checkVisota(etHn.getText().toString());
+        Utils.h2 = Verifier.checkVisota(etHk.getText().toString());
 
         Utils.makeToast(this);
 

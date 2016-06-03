@@ -1,4 +1,4 @@
-package empoluboyarov.com.gashelper;
+package empoluboyarov.com.gashelper.hardcounts;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import empoluboyarov.com.gashelper.R;
 import empoluboyarov.com.gashelper.core.BaseCalc;
 import empoluboyarov.com.gashelper.core.Utils;
 import empoluboyarov.com.gashelper.core.Verifier;
@@ -31,17 +32,11 @@ public class ConvertVolumeActivity extends AppCompatActivity {
     public void convertVolume(View view) {
         Verifier.isCheck = true;
 
-        String txtRo = etRo.getText().toString();
-        String txtPn = etPn.getText().toString();;
-        String txtPrt = etPrt.getText().toString();;
-        String txtTn = etTn.getText().toString();;
-        String txtVg = etVg.getText().toString();;
-
-        Utils.ro = Verifier.checkDensity(txtRo);
-        Utils.pn = Verifier.checkPressure(txtPn);
-        Utils.prt = Verifier.checkAtmPressure(txtPrt);
-        Utils.tn = Verifier.checkTemperature(txtTn);
-        Utils.vg = Verifier.checkVolume(txtVg);
+        Utils.ro = Verifier.checkDensity(etRo.getText().toString());
+        Utils.pn = Verifier.checkPressure(etPn.getText().toString());
+        Utils.prt = Verifier.checkAtmPressure(etPrt.getText().toString());
+        Utils.tn = Verifier.checkTemperature(etTn.getText().toString());
+        Utils.vg = Verifier.checkVolume(etVg.getText().toString());
         Utils.privp = Utils.PRES_PRIVEDNIYA;
         Utils.privt = Utils.TEMP_PRIVEDENIYA;
 

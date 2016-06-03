@@ -1,4 +1,4 @@
-package empoluboyarov.com.gashelper;
+package empoluboyarov.com.gashelper.hardcounts;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import empoluboyarov.com.gashelper.R;
 import empoluboyarov.com.gashelper.core.BaseCalc;
 import empoluboyarov.com.gashelper.core.Utils;
 import empoluboyarov.com.gashelper.core.Verifier;
@@ -20,16 +21,16 @@ public class CalcAverageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc_average);
 
-        etRo = (EditText)findViewById(R.id.etRoProd);
-        etPn = (EditText)findViewById(R.id.etPnProp);
-        etPk = (EditText)findViewById(R.id.etPkProp);
-        etPrt = (EditText)findViewById(R.id.etPrtProp);
-        etTn = (EditText)findViewById(R.id.etTnProp);
-        etTk = (EditText)findViewById(R.id.etTkProp);
-        etTgr = (EditText)findViewById(R.id.etTgrProp);
-        etQf = (EditText)findViewById(R.id.etHydroProp);
-        etL = (EditText)findViewById(R.id.etLAv);
-        etD = (EditText)findViewById(R.id.etTimProd);
+        etRo = (EditText) findViewById(R.id.etRoAv);
+        etPn = (EditText) findViewById(R.id.etPnAv);
+        etPk = (EditText) findViewById(R.id.etPkAv);
+        etPrt = (EditText) findViewById(R.id.etPrtAv);
+        etTn = (EditText) findViewById(R.id.etTnAv);
+        etTk = (EditText) findViewById(R.id.etTkAv);
+        etTgr = (EditText) findViewById(R.id.etTgrAv);
+        etQf = (EditText) findViewById(R.id.etQfAv);
+        etL = (EditText) findViewById(R.id.etLAv);
+        etD = (EditText) findViewById(R.id.etDAv);
 
         tvResult = (TextView) findViewById(R.id.tvResultAv);
     }
@@ -37,30 +38,18 @@ public class CalcAverageActivity extends AppCompatActivity {
     public void calcAverage(View view) {
         Verifier.isCheck = true;
 
-        String txtRo = etRo.getText().toString();
-        String txtPn = etPn.getText().toString();
-        String txtPk = etPk.getText().toString();
-        String txtPrt = etPrt.getText().toString();
-        String txtTn = etTn.getText().toString();
-        String txtTk = etTk.getText().toString();
-        String txtTgr = etTgr.getText().toString();
-        String txtQf = etQf.getText().toString();
-        String txtL = etL.getText().toString();
-        String txtD = etD.getText().toString();
-
-
-        Utils.ro = Verifier.checkDensity(txtRo);
-        Utils.pn = Verifier.checkPressure(txtPn);
-        Utils.pk = Verifier.checkPressure(txtPk);
-        Utils.prt = Verifier.checkAtmPressure(txtPrt);
+        Utils.ro = Verifier.checkDensity(etRo.getText().toString());
+        Utils.pn = Verifier.checkPressure(etPn.getText().toString());
+        Utils.pk = Verifier.checkPressure(etPk.getText().toString());
+        Utils.prt = Verifier.checkAtmPressure(etPrt.getText().toString());
         Verifier.checkDeltaPres(Utils.pn, Utils.pk);
-        Utils.tn = Verifier.checkTemperature(txtTn);
-        Utils.tk = Verifier.checkTemperature(txtTk);
+        Utils.tn = Verifier.checkTemperature(etTn.getText().toString());
+        Utils.tk = Verifier.checkTemperature(etTk.getText().toString());
         Verifier.checkDeltaTemp(Utils.tn, Utils.tk);
-        Utils.tgr = Verifier.checkTemperature(txtTgr);
-        Utils.qf = Verifier.checkGasTransport(txtQf);
-        Utils.lkm = Verifier.checkLength(txtL);
-        Utils.dmm = Verifier.checkDiameter(txtD);
+        Utils.tgr = Verifier.checkTemperature(etTgr.getText().toString());
+        Utils.qf = Verifier.checkGasTransport(etQf.getText().toString());
+        Utils.lkm = Verifier.checkLength(etL.getText().toString());
+        Utils.dmm = Verifier.checkDiameter(etD.getText().toString());
 
         Utils.makeToast(this);
 
@@ -69,6 +58,7 @@ public class CalcAverageActivity extends AppCompatActivity {
             double patm = Utils.prt * 0.001359511;
             double pnabs = Utils.pn + patm;
             double pkabs = Utils.pk + patm;
+
             Utils.privp = Utils.privp * 0.001359511;
             Utils.tn = Utils.tn + 273.15;
             Utils.tk = Utils.tk + 273.15;

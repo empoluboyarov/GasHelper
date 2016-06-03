@@ -1,4 +1,4 @@
-package empoluboyarov.com.gashelper;
+package empoluboyarov.com.gashelper.hardcounts;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,14 +6,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import empoluboyarov.com.gashelper.R;
 import empoluboyarov.com.gashelper.core.BaseCalc;
 import empoluboyarov.com.gashelper.core.Utils;
 import empoluboyarov.com.gashelper.core.Verifier;
 
 public class DynamicCountActivity extends AppCompatActivity {
 
-    private EditText etTempStart, etTempFin, etTempGrunta, etGasTransport, etLength, etDiamet,
-            etPresStart, etPresFin, etDens, etAtmPres;
+    private EditText etPn, etPk, etPrt, etRo, etTn, etTk, etTgr, etL, etD, etQf;
     private TextView tvResult;
 
     private static final double TEMP_PRIVEDENIYA = 20;
@@ -24,17 +24,17 @@ public class DynamicCountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dynamic_count);
 
-        etDens = (EditText) findViewById(R.id.etRoProd);
-        etAtmPres = (EditText) findViewById(R.id.etPrtProp);
-        etTempStart = (EditText) findViewById(R.id.etTnProp);
-        etTempFin = (EditText) findViewById(R.id.etTkProp);
-        etTempGrunta = (EditText) findViewById(R.id.etTgrProp);
-        etPresStart = (EditText) findViewById(R.id.etPnProp);
-        etPresFin = (EditText) findViewById(R.id.etPkProp);
-        etGasTransport = (EditText) findViewById(R.id.etHydroProp);
-        etLength = (EditText) findViewById(R.id.etLAv);
-        etDiamet = (EditText) findViewById(R.id.etTimProd);
-        tvResult = (TextView) findViewById(R.id.tvResultAv);
+        etRo = (EditText) findViewById(R.id.etRoDC);
+        etPrt = (EditText) findViewById(R.id.etPrtDC);
+        etTn = (EditText) findViewById(R.id.etTnDC);
+        etTk = (EditText) findViewById(R.id.etTkDC);
+        etTgr = (EditText) findViewById(R.id.etTgrDC);
+        etPn = (EditText) findViewById(R.id.etPnDC);
+        etPk = (EditText) findViewById(R.id.etPkDC);
+        etQf = (EditText) findViewById(R.id.etQfDC);
+        etL = (EditText) findViewById(R.id.etLDC);
+        etD = (EditText) findViewById(R.id.etDDC);
+        tvResult = (TextView) findViewById(R.id.tvResultDC);
 
     }
 
@@ -42,29 +42,18 @@ public class DynamicCountActivity extends AppCompatActivity {
 
         Verifier.isCheck = true;
 
-        String txtTempStart = etTempStart.getText().toString();
-        String txtDens = etDens.getText().toString();
-        String txtAtmPres = etAtmPres.getText().toString();
-        String txtTempFin = etTempFin.getText().toString();
-        String txtPresStart = etPresStart.getText().toString();
-        String txtPresFin = etPresFin.getText().toString();
-        String txtGasTransport = etGasTransport.getText().toString();
-        String txtLength = etLength.getText().toString();
-        String txtDiamet = etDiamet.getText().toString();
-        String txtTempGrunt = etTempGrunta.getText().toString();
-
-        Utils.pn = Verifier.checkPressure(txtPresStart);
-        Utils.pk = Verifier.checkPressure(txtPresFin);
+        Utils.pn = Verifier.checkPressure(etPn.getText().toString());
+        Utils.pk = Verifier.checkPressure(etPk.getText().toString());
         Verifier.checkDeltaPres(Utils.pn, Utils.pk);
-        Utils.prt = Verifier.checkAtmPressure(txtAtmPres);
-        Utils.ro = Verifier.checkDensity(txtDens);
-        Utils.tn = Verifier.checkTemperature(txtTempStart);
-        Utils.tk = Verifier.checkTemperature(txtTempFin);
+        Utils.prt = Verifier.checkAtmPressure(etPrt.getText().toString());
+        Utils.ro = Verifier.checkDensity(etRo.getText().toString());
+        Utils.tn = Verifier.checkTemperature(etTn.getText().toString());
+        Utils.tk = Verifier.checkTemperature(etTk.getText().toString());
         Verifier.checkDeltaTemp(Utils.tn, Utils.tk);
-        Utils.tgr = Verifier.checkTemperature(txtTempGrunt);
-        Utils.dmm = Verifier.checkDiameter(txtDiamet);
-        Utils.lkm = Verifier.checkLength(txtLength);
-        Utils.qf = Verifier.checkGasTransport(txtGasTransport);
+        Utils.tgr = Verifier.checkTemperature(etTgr.getText().toString());
+        Utils.dmm = Verifier.checkDiameter(etD.getText().toString());
+        Utils.lkm = Verifier.checkLength(etL.getText().toString());
+        Utils.qf = Verifier.checkGasTransport(etQf.getText().toString());
         Utils.makeToast(this);
 
         if (Verifier.isCheck) {

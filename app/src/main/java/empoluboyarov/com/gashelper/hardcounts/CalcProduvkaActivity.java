@@ -1,4 +1,4 @@
-package empoluboyarov.com.gashelper;
+package empoluboyarov.com.gashelper.hardcounts;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import empoluboyarov.com.gashelper.R;
 import empoluboyarov.com.gashelper.core.BaseCalc;
 import empoluboyarov.com.gashelper.core.Utils;
 import empoluboyarov.com.gashelper.core.Verifier;
@@ -22,14 +23,14 @@ public class CalcProduvkaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calc_produvka);
 
         etRo = (EditText) findViewById(R.id.etRoProd);
-        etAzot = (EditText) findViewById(R.id.etPnProp);
-        etPn = (EditText) findViewById(R.id.etPkProp);
-        etPrt = (EditText) findViewById(R.id.etPrtProp);
-        etTn = (EditText) findViewById(R.id.etTnProp);
-        etTgr = (EditText) findViewById(R.id.etTkProp);
-        etL = (EditText) findViewById(R.id.etTgrProp);
-        etD = (EditText) findViewById(R.id.etHydroProp);
-        etDk = (EditText) findViewById(R.id.etLProp);
+        etAzot = (EditText) findViewById(R.id.etAzotProd);
+        etPn = (EditText) findViewById(R.id.etPnProd);
+        etPrt = (EditText) findViewById(R.id.etPrtProd);
+        etTn = (EditText) findViewById(R.id.etTnProd);
+        etTgr = (EditText) findViewById(R.id.etTgrProd);
+        etL = (EditText) findViewById(R.id.etLProd);
+        etD = (EditText) findViewById(R.id.etDProd);
+        etDk = (EditText) findViewById(R.id.etDkProd);
         etTim = (EditText) findViewById(R.id.etTimProd);
 
         tvResult = (TextView) findViewById(R.id.tvResultProd);
@@ -40,28 +41,16 @@ public class CalcProduvkaActivity extends AppCompatActivity {
         String result = null;
         Verifier.isCheck = true;
 
-        String txtRo = etRo.getText().toString();
-        String txtAzot = etAzot.getText().toString();
-        String txtPn = etPn.getText().toString();
-        String txtPrt = etPrt.getText().toString();
-        String txtTn = etTn.getText().toString();
-        String txtTgr = etTgr.getText().toString();
-        String txtL = etL.getText().toString();
-        String txtD = etD.getText().toString();
-        String txtDk = etDk.getText().toString();
-        String txtTim = etTim.getText().toString();
-
-
-        Utils.ro = Verifier.checkDensity(txtRo);
-        Utils.azot = Verifier.checkNitrogen(txtAzot);
-        Utils.pn = Verifier.checkPressure(txtPn);
-        Utils.prt = Verifier.checkAtmPressure(txtPrt);
-        Utils.tn = Verifier.checkTemperature(txtTn);
-        Utils.tgr = Verifier.checkTemperature(txtTgr);
-        Utils.tim = Verifier.checkFlowTime(txtTim);
-        Utils.dmm = Verifier.checkSmallDiameter(txtD);
-        Utils.dkmm = Verifier.checkSmallDiameter(txtDk);
-        Utils.lm = Verifier.checkSmallLength(txtL);
+        Utils.ro = Verifier.checkDensity(etRo.getText().toString());
+        Utils.azot = Verifier.checkNitrogen(etAzot.getText().toString());
+        Utils.pn = Verifier.checkPressure(etPn.getText().toString());
+        Utils.prt = Verifier.checkAtmPressure(etPrt.getText().toString());
+        Utils.tn = Verifier.checkTemperature(etTn.getText().toString());
+        Utils.tgr = Verifier.checkTemperature(etTgr.getText().toString());
+        Utils.tim = Verifier.checkFlowTime(etTim.getText().toString());
+        Utils.dmm = Verifier.checkSmallDiameter(etD.getText().toString());
+        Utils.dkmm = Verifier.checkSmallDiameter(etDk.getText().toString());
+        Utils.lm = Verifier.checkSmallLength(etL.getText().toString());
 
         Utils.makeToast(this);
 

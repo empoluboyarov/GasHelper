@@ -44,26 +44,26 @@
             android:label="Cкорость истечения газа"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".DynamicCountActivity"
+            android:name=".hardcounts.DynamicCountActivity"
             android:label="Запас газа в действующем газопроводе"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".ConvertVolumeActivity"
+            android:name=".hardcounts.ConvertVolumeActivity"
             android:label="Пересчет объема газа для счетчика"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".CalcAverageActivity"
+            android:name=".hardcounts.CalcAverageActivity"
             android:label="Среднее давление и средняя температура"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".CalcEffectivActivity"
+            android:name=".hardcounts.CalcEffectivActivity"
             android:label="Гидравлическая эффективность МГ"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".CalcPropuskActivity"
+            android:name=".hardcounts.CalcPropuskActivity"
             android:label="Пропускная способность участка МГ"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".CalcProduvkaActivity"
+        <activity android:name=".hardcounts.CalcProduvkaActivity"
             android:label="Продувка оборудования"
             android:parentActivityName=".MainActivity"/>
     </application>

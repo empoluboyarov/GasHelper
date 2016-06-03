@@ -1,13 +1,19 @@
 package empoluboyarov.com.gashelper;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import empoluboyarov.com.gashelper.hardcounts.CalcAverageActivity;
+import empoluboyarov.com.gashelper.hardcounts.CalcEffectivActivity;
+import empoluboyarov.com.gashelper.hardcounts.CalcProduvkaActivity;
+import empoluboyarov.com.gashelper.hardcounts.CalcPropuskActivity;
+import empoluboyarov.com.gashelper.hardcounts.ConvertVolumeActivity;
+import empoluboyarov.com.gashelper.hardcounts.DynamicCountActivity;
 import empoluboyarov.com.gashelper.simplecounts.CalcAdiabataActivity;
 import empoluboyarov.com.gashelper.simplecounts.CalcFactDensActivity;
 import empoluboyarov.com.gashelper.simplecounts.CalcGasCountActivity;
