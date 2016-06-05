@@ -245,4 +245,20 @@ public final class Verifier {
         }
         return result;
     }
+
+    public static double checkDewPoint(String txtDp) {
+        if (txtDp == null || txtDp.isEmpty()) {
+            message = "Введите корректное значение точки росы.";
+            isCheck = false;
+        } else {
+            double length = Double.valueOf(txtDp);
+            if (length < -40 || length > 40) {
+                message = "Значение точки росы: от -40 до +40 град.с!";
+                isCheck = false;
+            } else {
+                result = length;
+            }
+        }
+        return result;
+    }
 }

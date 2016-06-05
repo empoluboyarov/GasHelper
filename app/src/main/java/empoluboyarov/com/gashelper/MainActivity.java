@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(MainActivity.this, CalcAverageActivity.class));
                 else if (i == 11)
                     startActivity(new Intent(MainActivity.this, ConvertVolumeActivity.class));
+                else if (i == 12)
+                    startActivity(new Intent(MainActivity.this, DewPointActivity.class));
             }
         };
         ListView listView = (ListView) findViewById(R.id.list_main);

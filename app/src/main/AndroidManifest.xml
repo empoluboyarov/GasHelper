@@ -63,8 +63,12 @@
             android:name=".hardcounts.CalcPropuskActivity"
             android:label="Пропускная способность участка МГ"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".hardcounts.CalcProduvkaActivity"
+        <activity
+            android:name=".hardcounts.CalcProduvkaActivity"
             android:label="Продувка оборудования"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".DewPointActivity"
+            android:label="Пересчет точки росы"
             android:parentActivityName=".MainActivity"/>
     </application>
 
